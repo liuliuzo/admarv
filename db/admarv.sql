@@ -1,0 +1,53 @@
+DROP TABLE IF EXISTS sys_user;
+CREATE TABLE `sys_user` (
+  `id` INT AUTO_INCREMENT COMMENT '主键id',
+  `user_name` varchar(100) DEFAULT NULL COMMENT '登录账号',
+  `real_name` varchar(100) DEFAULT NULL COMMENT '真实姓名',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `salt` varchar(45) DEFAULT NULL COMMENT 'md5密码盐',
+  `avatar` varchar(255) DEFAULT NULL COMMENT '头像',
+  `birthday` datetime DEFAULT NULL COMMENT '生日',
+  `sex` tinyint(1) DEFAULT NULL COMMENT '性别(0-默认未知,1-男,2-女)',
+  `email` varchar(45) DEFAULT NULL COMMENT '电子邮件',
+  `phone` varchar(45) DEFAULT NULL COMMENT '电话',
+  `org_code` varchar(64) DEFAULT NULL COMMENT '登录会话的机构编码',
+  `status` tinyint(1) DEFAULT NULL COMMENT '性别(1-正常,2-冻结)',
+  `third_id` varchar(100) DEFAULT NULL COMMENT '第三方登录的唯一标识',
+  `third_type` varchar(100) DEFAULT NULL COMMENT '第三方类型',
+  `telephone` varchar(45) DEFAULT NULL COMMENT '座机号',
+  `fb_token` varchar(1024) DEFAULT NULL COMMENT 'facebook access token',
+  `del_flag` tinyint(1) DEFAULT NULL COMMENT '删除状态(0-正常,1-已删除)',
+  `create_by` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_by` varchar(32) DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `uniq_sys_user_user_name` (`user_name`) USING BTREE,
+  UNIQUE KEY `uniq_sys_user_phone` (`phone`) USING BTREE,
+  UNIQUE KEY `uniq_sys_user_email` (`email`) USING BTREE,
+  KEY `idx_user_name` (`user_name`) USING BTREE,
+  KEY `idx_status` (`status`) USING BTREE,
+  KEY `idx_del_flag` (`del_flag`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 COMMENT='用户表';
+
+DROP TABLE IF EXISTS `lead_gen`;
+CREATE TABLE `lead_gen` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `lead_id` VARCHAR(255),
+  `name` VARCHAR(255),
+  `email` VARCHAR(255),
+  `cntct` VARCHAR(255),
+  `crte_tm` VARCHAR(255),
+  `lead_stat` VARCHAR(255),
+  `regn` VARCHAR(255),
+  `flwp_stat` VARCHAR(255),
+  `rsrc` VARCHAR(255),
+  `form_id` VARCHAR(255),
+  `owner` VARCHAR(255) COMMENT '负责人',
+  `user_name` VARCHAR(255) COMMENT '账户所有人',
+  `del_flag` tinyint(1) DEFAULT NULL COMMENT '删除状态(0-正常,1-已删除)',
+  `create_by` varchar(32) DEFAULT 'system' COMMENT '创建人',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_by` varchar(32) DEFAULT 'system' COMMENT '更新人',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) ENGINE=InnoDB AUTO_INCREMENT=1 COMMENT='询盘单表';

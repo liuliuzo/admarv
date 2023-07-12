@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.LeadGenMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.LeadGen">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lead_id" jdbcType="VARCHAR" property="leadId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="cntct" jdbcType="VARCHAR" property="cntct" />
+    <result column="crte_tm" jdbcType="VARCHAR" property="crteTm" />
+    <result column="lead_stat" jdbcType="VARCHAR" property="leadStat" />
+    <result column="regn" jdbcType="VARCHAR" property="regn" />
+    <result column="flwp_stat" jdbcType="VARCHAR" property="flwpStat" />
+    <result column="rsrc" jdbcType="VARCHAR" property="rsrc" />
+    <result column="form_id" jdbcType="VARCHAR" property="formId" />
+    <result column="owner" jdbcType="VARCHAR" property="owner" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lead_gen
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.LeadGen">
+    insert into lead_gen (id, lead_id, name, 
+      email, cntct, crte_tm, 
+      lead_stat, regn, flwp_stat, 
+      rsrc, form_id, owner, 
+      user_name, del_flag, create_by, 
+      create_time, update_by, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{cntct,jdbcType=VARCHAR}, #{crteTm,jdbcType=VARCHAR}, 
+      #{leadStat,jdbcType=VARCHAR}, #{regn,jdbcType=VARCHAR}, #{flwpStat,jdbcType=VARCHAR}, 
+      #{rsrc,jdbcType=VARCHAR}, #{formId,jdbcType=VARCHAR}, #{owner,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.LeadGen">
+    update lead_gen
+    set lead_id = #{leadId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      cntct = #{cntct,jdbcType=VARCHAR},
+      crte_tm = #{crteTm,jdbcType=VARCHAR},
+      lead_stat = #{leadStat,jdbcType=VARCHAR},
+      regn = #{regn,jdbcType=VARCHAR},
+      flwp_stat = #{flwpStat,jdbcType=VARCHAR},
+      rsrc = #{rsrc,jdbcType=VARCHAR},
+      form_id = #{formId,jdbcType=VARCHAR},
+      owner = #{owner,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, lead_id, name, email, cntct, crte_tm, lead_stat, regn, flwp_stat, rsrc, 
+    form_id, owner, user_name, del_flag, create_by, create_time, update_by, update_time
+    from lead_gen
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, lead_id, name, email, cntct, crte_tm, lead_stat, regn, flwp_stat, rsrc, 
+    form_id, owner, user_name, del_flag, create_by, create_time, update_by, update_time
+    from lead_gen
+  </select>
+ 
+  <select id="selectByEntity" parameterType="com.admarv.saas.model.LeadGen" resultMap="BaseResultMap">
+       select * from lead_gen where 1=1
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="leadId != null">
+       and lead_id = #{leadId,jdbcType=INTEGER}
+      </if>  
+      <if test="name != null">
+       and name = #{name,jdbcType=VARCHAR}
+      </if>
+        <if test="email != null">
+       and email = #{email,jdbcType=VARCHAR}
+      </if>
+        <if test="cntct != null">
+       and cntct = #{cntct,jdbcType=VARCHAR}
+      </if>
+        <if test="crteTm != null">
+       and crte_tm = #{crteTm,jdbcType=VARCHAR}
+      </if>
+        <if test="leadStat != null">
+       and lead_stat = #{leadStat,jdbcType=VARCHAR}
+      </if>
+        <if test="regn != null">
+       and regn = #{regn,jdbcType=VARCHAR}
+      </if>
+        <if test="flwpStat != null">
+       and flwp_stat = #{flwpStat,jdbcType=VARCHAR}
+      </if>
+        <if test="rsrc != null">
+       and rsrc = #{rsrc,jdbcType=VARCHAR}
+      </if>
+      <if test="formId != null">
+       and form_id = #{formId,jdbcType=VARCHAR}
+      </if>
+      <if test="owner != null">
+       and owner = #{owner,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+       and user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="delFlag != null">
+       and del_flag = #{delFlag,jdbcType=VARCHAR}
+      </if>
+        <if test="createBy != null">
+       and create_by = #{createBy,jdbcType=VARCHAR}
+      </if>
+        <if test="createTime != null">
+       and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+        <if test="updateBy != null">
+       and update_by = #{updateBy,jdbcType=VARCHAR}
+      </if>
+        <if test="updateTime != null">
+       and update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+ </select>
+  
+  <select id="selectByOneEntity" parameterType="com.admarv.saas.model.LeadGen" resultMap="BaseResultMap">
+     select * from lead_gen where 1=1
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="leadId != null">
+       and lead_id = #{leadId,jdbcType=INTEGER}
+      </if>  
+      <if test="name != null">
+       and name = #{name,jdbcType=VARCHAR}
+      </if>
+        <if test="email != null">
+       and email = #{email,jdbcType=VARCHAR}
+      </if>
+        <if test="cntct != null">
+       and cntct = #{cntct,jdbcType=VARCHAR}
+      </if>
+        <if test="crteTm != null">
+       and crte_tm = #{crteTm,jdbcType=VARCHAR}
+      </if>
+        <if test="leadStat != null">
+       and lead_stat = #{leadStat,jdbcType=VARCHAR}
+      </if>
+        <if test="regn != null">
+       and regn = #{regn,jdbcType=VARCHAR}
+      </if>
+        <if test="flwpStat != null">
+       and flwp_stat = #{flwpStat,jdbcType=VARCHAR}
+      </if>
+        <if test="rsrc != null">
+       and rsrc = #{rsrc,jdbcType=VARCHAR}
+      </if>
+      <if test="formId != null">
+       and form_id = #{formId,jdbcType=VARCHAR}
+      </if>
+      <if test="owner != null">
+       and owner = #{owner,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+       and user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="delFlag != null">
+       and del_flag = #{delFlag,jdbcType=VARCHAR}
+      </if>
+        <if test="createBy != null">
+       and create_by = #{createBy,jdbcType=VARCHAR}
+      </if>
+        <if test="createTime != null">
+       and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+        <if test="updateBy != null">
+       and update_by = #{updateBy,jdbcType=VARCHAR}
+      </if>
+      <if test="updateTime != null">
+       and update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+  </select>
+  
+</mapper>

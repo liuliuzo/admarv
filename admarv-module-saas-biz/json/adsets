@@ -1,0 +1,17 @@
+一、act_583806506968340/adsets
+{
+  "data": [
+    {
+      "id": "23853331913850062"
+    },
+    {
+      "id": "23853319465390062"
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "QVFIUmt4X3NtS3d2VEpmMUlxOW1NTnNMYXVrcnc5UURGTGxpM3A4N2JQSXhEc2lLLVlnM3ZAZAWDYyemFUSk1rWFMxUy10MktmVTZAaZAUVENVF4ZAXVhQnFXYTFB",
+      "after": "QVFIUldCaWF3ekFoWTA1VHptZAkh1UmFVTnVNc29acjR4bC1kVUZARS1gwYmFROTExbTZA1dTRxYkd6dl9FODltUURIS1RuTlVoN2VGR3JSNDVlQXJLRXN6bmVn"
+    }
+  }
+}
