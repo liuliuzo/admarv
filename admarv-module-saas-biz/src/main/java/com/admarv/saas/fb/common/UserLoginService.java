@@ -14,6 +14,7 @@ import com.admarv.saas.model.SysUser;
  */
 @Service
 public class UserLoginService {
+
     private static final Logger log = LoggerFactory.getLogger(UserLoginService.class);
 
     @Autowired
