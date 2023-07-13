@@ -16,6 +16,7 @@ import com.admarv.saas.fb.ads.dto.req.ReqLeadgenAllocate;
 import com.admarv.saas.fb.ads.dto.req.ReqLeadgenEdit;
 import com.admarv.saas.fb.ads.dto.resp.RespAdaccount;
 import com.admarv.saas.fb.ads.dto.resp.RespCampaign;
+import com.admarv.saas.fb.ads.task.CampaignsInsightsTask;
 import com.admarv.saas.fb.ads.task.LeadGenTask;
 import com.admarv.saas.fb.common.FacebookClientService;
 import com.admarv.saas.fb.common.Response;
@@ -60,6 +61,9 @@ public class OdsController {
     
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private CampaignsInsightsTask campaignsInsightsTask; 
 
     /**
      * 获取广告系列查询
@@ -146,6 +150,18 @@ public class OdsController {
         log.info("/admarv/refreshLeadgen");
         leadGenTask.doLeadGenTask();
         return "success refresh leadenTask ";
+    }
+    
+    /**
+     * 刷新广告系列成果
+     * 
+     * @return
+     */
+    @RequestMapping(value = "/admarv/refreshCampaignsInsights", method = RequestMethod.GET)
+    public String refreshCampaignsInsights() {
+        log.info("/admarv/refreshCampaignsInsights");
+        campaignsInsightsTask.doCampaignsInsightsTask();
+        return "success refresh campaignsInsightsTask ";
     }
     
     /**

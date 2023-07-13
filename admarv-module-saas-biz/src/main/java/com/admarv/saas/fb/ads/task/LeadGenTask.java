@@ -57,7 +57,7 @@ public class LeadGenTask {
     public void doLeadGenTask() {
         log.info("leadenTask start");
         if(!facebookClientService.checkClients()) {
-            log.warn("not init oauth task not execute");
+            log.warn("not init oauth clients task not execute");
             return ;
         }
         // 获取SAAS平台中的所有用户

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.CampaignsInsightsMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.CampaignsInsights">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account_currency" jdbcType="VARCHAR" property="accountCurrency" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="action_values" jdbcType="VARCHAR" property="actionValues" />
+    <result column="actions" jdbcType="INTEGER" property="actions" />
+    <result column="activity_recency" jdbcType="INTEGER" property="activityRecency" />
+    <result column="ad_click_actions" jdbcType="INTEGER" property="adClickActions" />
+    <result column="ad_format_asset" jdbcType="VARCHAR" property="adFormatAsset" />
+    <result column="ad_id" jdbcType="VARCHAR" property="adId" />
+    <result column="ad_impression_actions" jdbcType="INTEGER" property="adImpressionActions" />
+    <result column="ad_name" jdbcType="VARCHAR" property="adName" />
+    <result column="adset_id" jdbcType="VARCHAR" property="adsetId" />
+    <result column="adset_name" jdbcType="VARCHAR" property="adsetName" />
+    <result column="age_targeting" jdbcType="VARCHAR" property="ageTargeting" />
+    <result column="attribution_setting" jdbcType="VARCHAR" property="attributionSetting" />
+    <result column="auction_bid" jdbcType="DOUBLE" property="auctionBid" />
+    <result column="auction_competitiveness" jdbcType="DOUBLE" property="auctionCompetitiveness" />
+    <result column="auction_max_competitor_bid" jdbcType="DOUBLE" property="auctionMaxCompetitorBid" />
+    <result column="body_asset" jdbcType="VARCHAR" property="bodyAsset" />
+    <result column="buying_type" jdbcType="VARCHAR" property="buyingType" />
+    <result column="campaign_id" jdbcType="VARCHAR" property="campaignId" />
+    <result column="campaign_name" jdbcType="VARCHAR" property="campaignName" />
+    <result column="canvas_avg_view_percent" jdbcType="DOUBLE" property="canvasAvgViewPercent" />
+    <result column="canvas_avg_view_time" jdbcType="DOUBLE" property="canvasAvgViewTime" />
+    <result column="catalog_segment_actions" jdbcType="INTEGER" property="catalogSegmentActions" />
+    <result column="catalog_segment_value" jdbcType="DOUBLE" property="catalogSegmentValue" />
+    <result column="catalog_segment_value_mobile_purchase_roas" jdbcType="DOUBLE" property="catalogSegmentValueMobilePurchaseRoas" />
+    <result column="catalog_segment_value_omni_purchase_roas" jdbcType="DOUBLE" property="catalogSegmentValueOmniPurchaseRoas" />
+    <result column="catalog_segment_value_website_purchase_roas" jdbcType="DOUBLE" property="catalogSegmentValueWebsitePurchaseRoas" />
+    <result column="clicks" jdbcType="INTEGER" property="clicks" />
+    <result column="coarse_conversion_value" jdbcType="DOUBLE" property="coarseConversionValue" />
+    <result column="comparison_node" jdbcType="VARCHAR" property="comparisonNode" />
+    <result column="conversion_values" jdbcType="DOUBLE" property="conversionValues" />
+    <result column="conversions" jdbcType="INTEGER" property="conversions" />
+    <result column="converted_product_quantity" jdbcType="INTEGER" property="convertedProductQuantity" />
+    <result column="converted_product_value" jdbcType="DOUBLE" property="convertedProductValue" />
+    <result column="cost_per_15_sec_video_view" jdbcType="DOUBLE" property="costPer15SecVideoView" />
+    <result column="cost_per_2_sec_continuous_video_view" jdbcType="DOUBLE" property="costPer2SecContinuousVideoView" />
+    <result column="cost_per_action_type" jdbcType="DOUBLE" property="costPerActionType" />
+    <result column="cost_per_ad_click" jdbcType="DOUBLE" property="costPerAdClick" />
+    <result column="cost_per_conversion" jdbcType="DOUBLE" property="costPerConversion" />
+    <result column="cost_per_dda_countby_convs" jdbcType="DOUBLE" property="costPerDdaCountbyConvs" />
+    <result column="cost_per_inline_link_click" jdbcType="DOUBLE" property="costPerInlineLinkClick" />
+    <result column="cost_per_inline_post_engagement" jdbcType="DOUBLE" property="costPerInlinePostEngagement" />
+    <result column="cost_per_one_thousand_ad_impression" jdbcType="DOUBLE" property="costPerOneThousandAdImpression" />
+    <result column="cost_per_outbound_click" jdbcType="DOUBLE" property="costPerOutboundClick" />
+    <result column="cost_per_thruplay" jdbcType="DOUBLE" property="costPerThruplay" />
+    <result column="cost_per_unique_action_type" jdbcType="DOUBLE" property="costPerUniqueActionType" />
+    <result column="cost_per_unique_click" jdbcType="DOUBLE" property="costPerUniqueClick" />
+    <result column="cost_per_unique_conversion" jdbcType="DOUBLE" property="costPerUniqueConversion" />
+    <result column="cost_per_unique_inline_link_click" jdbcType="DOUBLE" property="costPerUniqueInlineLinkClick" />
+    <result column="cost_per_unique_outbound_click" jdbcType="DOUBLE" property="costPerUniqueOutboundClick" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="cpc" jdbcType="DOUBLE" property="cpc" />
+    <result column="cpm" jdbcType="DOUBLE" property="cpm" />
+    <result column="cpp" jdbcType="DOUBLE" property="cpp" />
+    <result column="created_time" jdbcType="BIGINT" property="createdTime" />
+    <result column="ctr" jdbcType="DOUBLE" property="ctr" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from campaigns_insights
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.CampaignsInsights">
+    insert into campaigns_insights (id, account_currency, account_id, 
+      account_name, action_values, actions, 
+      activity_recency, ad_click_actions, ad_format_asset, 
+      ad_id, ad_impression_actions, ad_name, 
+      adset_id, adset_name, age_targeting, 
+      attribution_setting, auction_bid, auction_competitiveness, 
+      auction_max_competitor_bid, body_asset, buying_type, 
+      campaign_id, campaign_name, canvas_avg_view_percent, 
+      canvas_avg_view_time, catalog_segment_actions, 
+      catalog_segment_value, catalog_segment_value_mobile_purchase_roas, 
+      catalog_segment_value_omni_purchase_roas, catalog_segment_value_website_purchase_roas, 
+      clicks, coarse_conversion_value, comparison_node, 
+      conversion_values, conversions, converted_product_quantity, 
+      converted_product_value, cost_per_15_sec_video_view, 
+      cost_per_2_sec_continuous_video_view, cost_per_action_type, 
+      cost_per_ad_click, cost_per_conversion, cost_per_dda_countby_convs, 
+      cost_per_inline_link_click, cost_per_inline_post_engagement, 
+      cost_per_one_thousand_ad_impression, cost_per_outbound_click, 
+      cost_per_thruplay, cost_per_unique_action_type, 
+      cost_per_unique_click, cost_per_unique_conversion, 
+      cost_per_unique_inline_link_click, cost_per_unique_outbound_click, 
+      country, cpc, cpm, cpp, 
+      created_time, ctr)
+    values (#{id,jdbcType=INTEGER}, #{accountCurrency,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, 
+      #{accountName,jdbcType=VARCHAR}, #{actionValues,jdbcType=VARCHAR}, #{actions,jdbcType=INTEGER}, 
+      #{activityRecency,jdbcType=INTEGER}, #{adClickActions,jdbcType=INTEGER}, #{adFormatAsset,jdbcType=VARCHAR}, 
+      #{adId,jdbcType=VARCHAR}, #{adImpressionActions,jdbcType=INTEGER}, #{adName,jdbcType=VARCHAR}, 
+      #{adsetId,jdbcType=VARCHAR}, #{adsetName,jdbcType=VARCHAR}, #{ageTargeting,jdbcType=VARCHAR}, 
+      #{attributionSetting,jdbcType=VARCHAR}, #{auctionBid,jdbcType=DOUBLE}, #{auctionCompetitiveness,jdbcType=DOUBLE}, 
+      #{auctionMaxCompetitorBid,jdbcType=DOUBLE}, #{bodyAsset,jdbcType=VARCHAR}, #{buyingType,jdbcType=VARCHAR}, 
+      #{campaignId,jdbcType=VARCHAR}, #{campaignName,jdbcType=VARCHAR}, #{canvasAvgViewPercent,jdbcType=DOUBLE}, 
+      #{canvasAvgViewTime,jdbcType=DOUBLE}, #{catalogSegmentActions,jdbcType=INTEGER}, 
+      #{catalogSegmentValue,jdbcType=DOUBLE}, #{catalogSegmentValueMobilePurchaseRoas,jdbcType=DOUBLE}, 
+      #{catalogSegmentValueOmniPurchaseRoas,jdbcType=DOUBLE}, #{catalogSegmentValueWebsitePurchaseRoas,jdbcType=DOUBLE}, 
+      #{clicks,jdbcType=INTEGER}, #{coarseConversionValue,jdbcType=DOUBLE}, #{comparisonNode,jdbcType=VARCHAR}, 
+      #{conversionValues,jdbcType=DOUBLE}, #{conversions,jdbcType=INTEGER}, #{convertedProductQuantity,jdbcType=INTEGER}, 
+      #{convertedProductValue,jdbcType=DOUBLE}, #{costPer15SecVideoView,jdbcType=DOUBLE}, 
+      #{costPer2SecContinuousVideoView,jdbcType=DOUBLE}, #{costPerActionType,jdbcType=DOUBLE}, 
+      #{costPerAdClick,jdbcType=DOUBLE}, #{costPerConversion,jdbcType=DOUBLE}, #{costPerDdaCountbyConvs,jdbcType=DOUBLE}, 
+      #{costPerInlineLinkClick,jdbcType=DOUBLE}, #{costPerInlinePostEngagement,jdbcType=DOUBLE}, 
+      #{costPerOneThousandAdImpression,jdbcType=DOUBLE}, #{costPerOutboundClick,jdbcType=DOUBLE}, 
+      #{costPerThruplay,jdbcType=DOUBLE}, #{costPerUniqueActionType,jdbcType=DOUBLE}, 
+      #{costPerUniqueClick,jdbcType=DOUBLE}, #{costPerUniqueConversion,jdbcType=DOUBLE}, 
+      #{costPerUniqueInlineLinkClick,jdbcType=DOUBLE}, #{costPerUniqueOutboundClick,jdbcType=DOUBLE}, 
+      #{country,jdbcType=VARCHAR}, #{cpc,jdbcType=DOUBLE}, #{cpm,jdbcType=DOUBLE}, #{cpp,jdbcType=DOUBLE}, 
+      #{createdTime,jdbcType=BIGINT}, #{ctr,jdbcType=DOUBLE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.CampaignsInsights">
+    update campaigns_insights
+    set account_currency = #{accountCurrency,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      account_name = #{accountName,jdbcType=VARCHAR},
+      action_values = #{actionValues,jdbcType=VARCHAR},
+      actions = #{actions,jdbcType=INTEGER},
+      activity_recency = #{activityRecency,jdbcType=INTEGER},
+      ad_click_actions = #{adClickActions,jdbcType=INTEGER},
+      ad_format_asset = #{adFormatAsset,jdbcType=VARCHAR},
+      ad_id = #{adId,jdbcType=VARCHAR},
+      ad_impression_actions = #{adImpressionActions,jdbcType=INTEGER},
+      ad_name = #{adName,jdbcType=VARCHAR},
+      adset_id = #{adsetId,jdbcType=VARCHAR},
+      adset_name = #{adsetName,jdbcType=VARCHAR},
+      age_targeting = #{ageTargeting,jdbcType=VARCHAR},
+      attribution_setting = #{attributionSetting,jdbcType=VARCHAR},
+      auction_bid = #{auctionBid,jdbcType=DOUBLE},
+      auction_competitiveness = #{auctionCompetitiveness,jdbcType=DOUBLE},
+      auction_max_competitor_bid = #{auctionMaxCompetitorBid,jdbcType=DOUBLE},
+      body_asset = #{bodyAsset,jdbcType=VARCHAR},
+      buying_type = #{buyingType,jdbcType=VARCHAR},
+      campaign_id = #{campaignId,jdbcType=VARCHAR},
+      campaign_name = #{campaignName,jdbcType=VARCHAR},
+      canvas_avg_view_percent = #{canvasAvgViewPercent,jdbcType=DOUBLE},
+      canvas_avg_view_time = #{canvasAvgViewTime,jdbcType=DOUBLE},
+      catalog_segment_actions = #{catalogSegmentActions,jdbcType=INTEGER},
+      catalog_segment_value = #{catalogSegmentValue,jdbcType=DOUBLE},
+      catalog_segment_value_mobile_purchase_roas = #{catalogSegmentValueMobilePurchaseRoas,jdbcType=DOUBLE},
+      catalog_segment_value_omni_purchase_roas = #{catalogSegmentValueOmniPurchaseRoas,jdbcType=DOUBLE},
+      catalog_segment_value_website_purchase_roas = #{catalogSegmentValueWebsitePurchaseRoas,jdbcType=DOUBLE},
+      clicks = #{clicks,jdbcType=INTEGER},
+      coarse_conversion_value = #{coarseConversionValue,jdbcType=DOUBLE},
+      comparison_node = #{comparisonNode,jdbcType=VARCHAR},
+      conversion_values = #{conversionValues,jdbcType=DOUBLE},
+      conversions = #{conversions,jdbcType=INTEGER},
+      converted_product_quantity = #{convertedProductQuantity,jdbcType=INTEGER},
+      converted_product_value = #{convertedProductValue,jdbcType=DOUBLE},
+      cost_per_15_sec_video_view = #{costPer15SecVideoView,jdbcType=DOUBLE},
+      cost_per_2_sec_continuous_video_view = #{costPer2SecContinuousVideoView,jdbcType=DOUBLE},
+      cost_per_action_type = #{costPerActionType,jdbcType=DOUBLE},
+      cost_per_ad_click = #{costPerAdClick,jdbcType=DOUBLE},
+      cost_per_conversion = #{costPerConversion,jdbcType=DOUBLE},
+      cost_per_dda_countby_convs = #{costPerDdaCountbyConvs,jdbcType=DOUBLE},
+      cost_per_inline_link_click = #{costPerInlineLinkClick,jdbcType=DOUBLE},
+      cost_per_inline_post_engagement = #{costPerInlinePostEngagement,jdbcType=DOUBLE},
+      cost_per_one_thousand_ad_impression = #{costPerOneThousandAdImpression,jdbcType=DOUBLE},
+      cost_per_outbound_click = #{costPerOutboundClick,jdbcType=DOUBLE},
+      cost_per_thruplay = #{costPerThruplay,jdbcType=DOUBLE},
+      cost_per_unique_action_type = #{costPerUniqueActionType,jdbcType=DOUBLE},
+      cost_per_unique_click = #{costPerUniqueClick,jdbcType=DOUBLE},
+      cost_per_unique_conversion = #{costPerUniqueConversion,jdbcType=DOUBLE},
+      cost_per_unique_inline_link_click = #{costPerUniqueInlineLinkClick,jdbcType=DOUBLE},
+      cost_per_unique_outbound_click = #{costPerUniqueOutboundClick,jdbcType=DOUBLE},
+      country = #{country,jdbcType=VARCHAR},
+      cpc = #{cpc,jdbcType=DOUBLE},
+      cpm = #{cpm,jdbcType=DOUBLE},
+      cpp = #{cpp,jdbcType=DOUBLE},
+      created_time = #{createdTime,jdbcType=BIGINT},
+      ctr = #{ctr,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, account_currency, account_id, account_name, action_values, actions, activity_recency, 
+    ad_click_actions, ad_format_asset, ad_id, ad_impression_actions, ad_name, adset_id, 
+    adset_name, age_targeting, attribution_setting, auction_bid, auction_competitiveness, 
+    auction_max_competitor_bid, body_asset, buying_type, campaign_id, campaign_name, 
+    canvas_avg_view_percent, canvas_avg_view_time, catalog_segment_actions, catalog_segment_value, 
+    catalog_segment_value_mobile_purchase_roas, catalog_segment_value_omni_purchase_roas, 
+    catalog_segment_value_website_purchase_roas, clicks, coarse_conversion_value, comparison_node, 
+    conversion_values, conversions, converted_product_quantity, converted_product_value, 
+    cost_per_15_sec_video_view, cost_per_2_sec_continuous_video_view, cost_per_action_type, 
+    cost_per_ad_click, cost_per_conversion, cost_per_dda_countby_convs, cost_per_inline_link_click, 
+    cost_per_inline_post_engagement, cost_per_one_thousand_ad_impression, cost_per_outbound_click, 
+    cost_per_thruplay, cost_per_unique_action_type, cost_per_unique_click, cost_per_unique_conversion, 
+    cost_per_unique_inline_link_click, cost_per_unique_outbound_click, country, cpc, 
+    cpm, cpp, created_time, ctr
+    from campaigns_insights
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, account_currency, account_id, account_name, action_values, actions, activity_recency, 
+    ad_click_actions, ad_format_asset, ad_id, ad_impression_actions, ad_name, adset_id, 
+    adset_name, age_targeting, attribution_setting, auction_bid, auction_competitiveness, 
+    auction_max_competitor_bid, body_asset, buying_type, campaign_id, campaign_name, 
+    canvas_avg_view_percent, canvas_avg_view_time, catalog_segment_actions, catalog_segment_value, 
+    catalog_segment_value_mobile_purchase_roas, catalog_segment_value_omni_purchase_roas, 
+    catalog_segment_value_website_purchase_roas, clicks, coarse_conversion_value, comparison_node, 
+    conversion_values, conversions, converted_product_quantity, converted_product_value, 
+    cost_per_15_sec_video_view, cost_per_2_sec_continuous_video_view, cost_per_action_type, 
+    cost_per_ad_click, cost_per_conversion, cost_per_dda_countby_convs, cost_per_inline_link_click, 
+    cost_per_inline_post_engagement, cost_per_one_thousand_ad_impression, cost_per_outbound_click, 
+    cost_per_thruplay, cost_per_unique_action_type, cost_per_unique_click, cost_per_unique_conversion, 
+    cost_per_unique_inline_link_click, cost_per_unique_outbound_click, country, cpc, 
+    cpm, cpp, created_time, ctr
+    from campaigns_insights
+  </select>
+</mapper>

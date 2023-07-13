@@ -1,4 +1,4 @@
-package com.admarv.saas.fb.dto.resp.deliveryEstimate;
+package com.admarv.saas.fb.dto.resp.estimate;
 
 public class BidEstimate {
 
