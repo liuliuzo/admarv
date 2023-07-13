@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.admarv.saas.fb.ads.model.campaigns.Data;
+import com.admarv.saas.fb.ads.model.campaigns.FBCampaignsInsights;
 import com.admarv.saas.fb.common.FacebookClientService;
 import com.admarv.saas.mapper.CampaignsInsightsMapper;
 import com.admarv.saas.model.CampaignsInsights;
@@ -54,9 +56,24 @@ public class CampaignsService {
                 log.info("Campaign ID: {}", campaignId);
                 log.info("Campaign Name: {}", name);
                 // 获取广告系列的洞察数据
-                CampaignsInsights insights = facebookClient.fetchObject(campaignId + "/insights", CampaignsInsights.class);
-                log.info("insights: {}", insights);
-                campaignsInsightsMapper.insert(insights);
+                FBCampaignsInsights fbInsights = facebookClient.fetchObject(campaignId + "/insights", FBCampaignsInsights.class);
+                log.info("fbInsights: {}", fbInsights);
+                List<Data> listData= fbInsights.getData();
+                for (Data data : listData) {
+                	CampaignsInsights insights = new CampaignsInsights();
+                	insights.setAccountCurrency(data.getAccountCurrency());
+                	insights.setAccountId(data.getAccountId());
+                	insights.setAccountName(data.getAccountName());
+                	insights.setActions(data.getActions());
+                	insights.setActionValues(data.getActionValues());
+                	insights.setActivityRecency(data.getActivityRecency());
+                	insights.setAdClickActions(data.getAdClickActions());
+                	insights.setAdFormatAsset(data.getAdFormatAsset());
+                	insights.setAdId(data.getAdId());
+                	insights.setCtr(data.getCtr());
+                	insights.setCampaignId(data.getCampaignId());
+                    campaignsInsightsMapper.insert(insights);   
+				}
             }
         }
     }

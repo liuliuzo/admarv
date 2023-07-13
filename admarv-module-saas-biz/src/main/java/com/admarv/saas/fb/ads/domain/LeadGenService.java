@@ -34,7 +34,7 @@ public class LeadGenService {
      */
     public List<LeadGen> getLeadGenByUser(String user) {
         LeadGen selectEntity = new LeadGen();
-        selectEntity.setOwner(user);
+        selectEntity.setUserName(user);
         List<LeadGen> listLeadGen = leadGenMapper.selectByEntity(selectEntity);
         log.info("listLeadGen :{}", listLeadGen);
         return listLeadGen;

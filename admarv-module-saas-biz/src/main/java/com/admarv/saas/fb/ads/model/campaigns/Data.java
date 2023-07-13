@@ -1,4 +1,4 @@
-package com.admarv.saas.fb.dto.resp.campaigns;
+package com.admarv.saas.fb.ads.model.campaigns;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author liuliu
  *
  */
-public class CampaignsInsights implements Serializable {
+public class Data implements Serializable {
 
     private static final long serialVersionUID = -2773435376172314897L;
 

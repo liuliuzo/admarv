@@ -1,668 +1,442 @@
 package com.admarv.saas.model;
 
-import java.io.Serializable;
-
-public class CampaignsInsights implements Serializable {
-	
-    private Integer id;
-
-    private String accountCurrency;
-
-    private String accountId;
-
-    private String accountName;
-
-    private String actionValues;
-
-    private Integer actions;
-
-    private Integer activityRecency;
-
-    private Integer adClickActions;
-
-    private String adFormatAsset;
-
-    private String adId;
-
-    private Integer adImpressionActions;
-
-    private String adName;
-
-    private String adsetId;
-
-    private String adsetName;
-
-    private String ageTargeting;
-
-    private String attributionSetting;
-
-    private Double auctionBid;
-
-    private Double auctionCompetitiveness;
-
-    private Double auctionMaxCompetitorBid;
-
-    private String bodyAsset;
-
-    private String buyingType;
-
-    private String campaignId;
-
-    private String campaignName;
-
-    private Double canvasAvgViewPercent;
-
-    private Double canvasAvgViewTime;
-
-    private Integer catalogSegmentActions;
-
-    private Double catalogSegmentValue;
-
-    private Double catalogSegmentValueMobilePurchaseRoas;
-
-    private Double catalogSegmentValueOmniPurchaseRoas;
-
-    private Double catalogSegmentValueWebsitePurchaseRoas;
-
-    private Integer clicks;
-
-    private Double coarseConversionValue;
-
-    private String comparisonNode;
-
-    private Double conversionValues;
-
-    private Integer conversions;
-
-    private Integer convertedProductQuantity;
-
-    private Double convertedProductValue;
-
-    private Double costPer15SecVideoView;
-
-    private Double costPer2SecContinuousVideoView;
-
-    private Double costPerActionType;
-
-    private Double costPerAdClick;
-
-    private Double costPerConversion;
-
-    private Double costPerDdaCountbyConvs;
-
-    private Double costPerInlineLinkClick;
-
-    private Double costPerInlinePostEngagement;
-
-    private Double costPerOneThousandAdImpression;
-
-    private Double costPerOutboundClick;
-
-    private Double costPerThruplay;
-
-    private Double costPerUniqueActionType;
-
-    private Double costPerUniqueClick;
-
-    private Double costPerUniqueConversion;
-
-    private Double costPerUniqueInlineLinkClick;
-
-    private Double costPerUniqueOutboundClick;
-
-    private String country;
-
-    private Double cpc;
-
-    private Double cpm;
-
-    private Double cpp;
-
-    private Long createdTime;
-
-    private Double ctr;
-
-    private static final long serialVersionUID = 1L;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getAccountCurrency() {
-        return accountCurrency;
-    }
-
-    public void setAccountCurrency(String accountCurrency) {
-        this.accountCurrency = accountCurrency == null ? null : accountCurrency.trim();
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId == null ? null : accountId.trim();
-    }
-
-    public String getAccountName() {
-        return accountName;
-    }
-
-    public void setAccountName(String accountName) {
-        this.accountName = accountName == null ? null : accountName.trim();
-    }
-
-    public String getActionValues() {
-        return actionValues;
-    }
-
-    public void setActionValues(String actionValues) {
-        this.actionValues = actionValues == null ? null : actionValues.trim();
-    }
-
-    public Integer getActions() {
-        return actions;
-    }
-
-    public void setActions(Integer actions) {
-        this.actions = actions;
-    }
-
-    public Integer getActivityRecency() {
-        return activityRecency;
-    }
-
-    public void setActivityRecency(Integer activityRecency) {
-        this.activityRecency = activityRecency;
-    }
-
-    public Integer getAdClickActions() {
-        return adClickActions;
-    }
-
-    public void setAdClickActions(Integer adClickActions) {
-        this.adClickActions = adClickActions;
-    }
-
-    public String getAdFormatAsset() {
-        return adFormatAsset;
-    }
-
-    public void setAdFormatAsset(String adFormatAsset) {
-        this.adFormatAsset = adFormatAsset == null ? null : adFormatAsset.trim();
-    }
-
-    public String getAdId() {
-        return adId;
-    }
-
-    public void setAdId(String adId) {
-        this.adId = adId == null ? null : adId.trim();
-    }
-
-    public Integer getAdImpressionActions() {
-        return adImpressionActions;
-    }
-
-    public void setAdImpressionActions(Integer adImpressionActions) {
-        this.adImpressionActions = adImpressionActions;
-    }
-
-    public String getAdName() {
-        return adName;
-    }
-
-    public void setAdName(String adName) {
-        this.adName = adName == null ? null : adName.trim();
-    }
-
-    public String getAdsetId() {
-        return adsetId;
-    }
-
-    public void setAdsetId(String adsetId) {
-        this.adsetId = adsetId == null ? null : adsetId.trim();
-    }
-
-    public String getAdsetName() {
-        return adsetName;
-    }
-
-    public void setAdsetName(String adsetName) {
-        this.adsetName = adsetName == null ? null : adsetName.trim();
-    }
-
-    public String getAgeTargeting() {
-        return ageTargeting;
-    }
-
-    public void setAgeTargeting(String ageTargeting) {
-        this.ageTargeting = ageTargeting == null ? null : ageTargeting.trim();
-    }
-
-    public String getAttributionSetting() {
-        return attributionSetting;
-    }
-
-    public void setAttributionSetting(String attributionSetting) {
-        this.attributionSetting = attributionSetting == null ? null : attributionSetting.trim();
-    }
-
-    public Double getAuctionBid() {
-        return auctionBid;
-    }
-
-    public void setAuctionBid(Double auctionBid) {
-        this.auctionBid = auctionBid;
-    }
-
-    public Double getAuctionCompetitiveness() {
-        return auctionCompetitiveness;
-    }
-
-    public void setAuctionCompetitiveness(Double auctionCompetitiveness) {
-        this.auctionCompetitiveness = auctionCompetitiveness;
-    }
-
-    public Double getAuctionMaxCompetitorBid() {
-        return auctionMaxCompetitorBid;
-    }
-
-    public void setAuctionMaxCompetitorBid(Double auctionMaxCompetitorBid) {
-        this.auctionMaxCompetitorBid = auctionMaxCompetitorBid;
-    }
-
-    public String getBodyAsset() {
-        return bodyAsset;
-    }
-
-    public void setBodyAsset(String bodyAsset) {
-        this.bodyAsset = bodyAsset == null ? null : bodyAsset.trim();
-    }
-
-    public String getBuyingType() {
-        return buyingType;
-    }
-
-    public void setBuyingType(String buyingType) {
-        this.buyingType = buyingType == null ? null : buyingType.trim();
-    }
-
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId == null ? null : campaignId.trim();
-    }
-
-    public String getCampaignName() {
-        return campaignName;
-    }
-
-    public void setCampaignName(String campaignName) {
-        this.campaignName = campaignName == null ? null : campaignName.trim();
-    }
-
-    public Double getCanvasAvgViewPercent() {
-        return canvasAvgViewPercent;
-    }
-
-    public void setCanvasAvgViewPercent(Double canvasAvgViewPercent) {
-        this.canvasAvgViewPercent = canvasAvgViewPercent;
-    }
-
-    public Double getCanvasAvgViewTime() {
-        return canvasAvgViewTime;
-    }
-
-    public void setCanvasAvgViewTime(Double canvasAvgViewTime) {
-        this.canvasAvgViewTime = canvasAvgViewTime;
-    }
-
-    public Integer getCatalogSegmentActions() {
-        return catalogSegmentActions;
-    }
-
-    public void setCatalogSegmentActions(Integer catalogSegmentActions) {
-        this.catalogSegmentActions = catalogSegmentActions;
-    }
-
-    public Double getCatalogSegmentValue() {
-        return catalogSegmentValue;
-    }
-
-    public void setCatalogSegmentValue(Double catalogSegmentValue) {
-        this.catalogSegmentValue = catalogSegmentValue;
-    }
-
-    public Double getCatalogSegmentValueMobilePurchaseRoas() {
-        return catalogSegmentValueMobilePurchaseRoas;
-    }
-
-    public void setCatalogSegmentValueMobilePurchaseRoas(Double catalogSegmentValueMobilePurchaseRoas) {
-        this.catalogSegmentValueMobilePurchaseRoas = catalogSegmentValueMobilePurchaseRoas;
-    }
-
-    public Double getCatalogSegmentValueOmniPurchaseRoas() {
-        return catalogSegmentValueOmniPurchaseRoas;
-    }
-
-    public void setCatalogSegmentValueOmniPurchaseRoas(Double catalogSegmentValueOmniPurchaseRoas) {
-        this.catalogSegmentValueOmniPurchaseRoas = catalogSegmentValueOmniPurchaseRoas;
-    }
-
-    public Double getCatalogSegmentValueWebsitePurchaseRoas() {
-        return catalogSegmentValueWebsitePurchaseRoas;
-    }
-
-    public void setCatalogSegmentValueWebsitePurchaseRoas(Double catalogSegmentValueWebsitePurchaseRoas) {
-        this.catalogSegmentValueWebsitePurchaseRoas = catalogSegmentValueWebsitePurchaseRoas;
-    }
-
-    public Integer getClicks() {
-        return clicks;
-    }
-
-    public void setClicks(Integer clicks) {
-        this.clicks = clicks;
-    }
-
-    public Double getCoarseConversionValue() {
-        return coarseConversionValue;
-    }
-
-    public void setCoarseConversionValue(Double coarseConversionValue) {
-        this.coarseConversionValue = coarseConversionValue;
-    }
-
-    public String getComparisonNode() {
-        return comparisonNode;
-    }
-
-    public void setComparisonNode(String comparisonNode) {
-        this.comparisonNode = comparisonNode == null ? null : comparisonNode.trim();
-    }
-
-    public Double getConversionValues() {
-        return conversionValues;
-    }
-
-    public void setConversionValues(Double conversionValues) {
-        this.conversionValues = conversionValues;
-    }
-
-    public Integer getConversions() {
-        return conversions;
-    }
-
-    public void setConversions(Integer conversions) {
-        this.conversions = conversions;
-    }
-
-    public Integer getConvertedProductQuantity() {
-        return convertedProductQuantity;
-    }
-
-    public void setConvertedProductQuantity(Integer convertedProductQuantity) {
-        this.convertedProductQuantity = convertedProductQuantity;
-    }
-
-    public Double getConvertedProductValue() {
-        return convertedProductValue;
-    }
-
-    public void setConvertedProductValue(Double convertedProductValue) {
-        this.convertedProductValue = convertedProductValue;
-    }
-
-    public Double getCostPer15SecVideoView() {
-        return costPer15SecVideoView;
-    }
-
-    public void setCostPer15SecVideoView(Double costPer15SecVideoView) {
-        this.costPer15SecVideoView = costPer15SecVideoView;
-    }
-
-    public Double getCostPer2SecContinuousVideoView() {
-        return costPer2SecContinuousVideoView;
-    }
-
-    public void setCostPer2SecContinuousVideoView(Double costPer2SecContinuousVideoView) {
-        this.costPer2SecContinuousVideoView = costPer2SecContinuousVideoView;
-    }
-
-    public Double getCostPerActionType() {
-        return costPerActionType;
-    }
-
-    public void setCostPerActionType(Double costPerActionType) {
-        this.costPerActionType = costPerActionType;
-    }
-
-    public Double getCostPerAdClick() {
-        return costPerAdClick;
-    }
-
-    public void setCostPerAdClick(Double costPerAdClick) {
-        this.costPerAdClick = costPerAdClick;
-    }
-
-    public Double getCostPerConversion() {
-        return costPerConversion;
-    }
-
-    public void setCostPerConversion(Double costPerConversion) {
-        this.costPerConversion = costPerConversion;
-    }
-
-    public Double getCostPerDdaCountbyConvs() {
-        return costPerDdaCountbyConvs;
-    }
-
-    public void setCostPerDdaCountbyConvs(Double costPerDdaCountbyConvs) {
-        this.costPerDdaCountbyConvs = costPerDdaCountbyConvs;
-    }
-
-    public Double getCostPerInlineLinkClick() {
-        return costPerInlineLinkClick;
-    }
-
-    public void setCostPerInlineLinkClick(Double costPerInlineLinkClick) {
-        this.costPerInlineLinkClick = costPerInlineLinkClick;
-    }
-
-    public Double getCostPerInlinePostEngagement() {
-        return costPerInlinePostEngagement;
-    }
-
-    public void setCostPerInlinePostEngagement(Double costPerInlinePostEngagement) {
-        this.costPerInlinePostEngagement = costPerInlinePostEngagement;
-    }
-
-    public Double getCostPerOneThousandAdImpression() {
-        return costPerOneThousandAdImpression;
-    }
-
-    public void setCostPerOneThousandAdImpression(Double costPerOneThousandAdImpression) {
-        this.costPerOneThousandAdImpression = costPerOneThousandAdImpression;
-    }
-
-    public Double getCostPerOutboundClick() {
-        return costPerOutboundClick;
-    }
-
-    public void setCostPerOutboundClick(Double costPerOutboundClick) {
-        this.costPerOutboundClick = costPerOutboundClick;
-    }
-
-    public Double getCostPerThruplay() {
-        return costPerThruplay;
-    }
-
-    public void setCostPerThruplay(Double costPerThruplay) {
-        this.costPerThruplay = costPerThruplay;
-    }
-
-    public Double getCostPerUniqueActionType() {
-        return costPerUniqueActionType;
-    }
-
-    public void setCostPerUniqueActionType(Double costPerUniqueActionType) {
-        this.costPerUniqueActionType = costPerUniqueActionType;
-    }
-
-    public Double getCostPerUniqueClick() {
-        return costPerUniqueClick;
-    }
-
-    public void setCostPerUniqueClick(Double costPerUniqueClick) {
-        this.costPerUniqueClick = costPerUniqueClick;
-    }
-
-    public Double getCostPerUniqueConversion() {
-        return costPerUniqueConversion;
-    }
-
-    public void setCostPerUniqueConversion(Double costPerUniqueConversion) {
-        this.costPerUniqueConversion = costPerUniqueConversion;
-    }
-
-    public Double getCostPerUniqueInlineLinkClick() {
-        return costPerUniqueInlineLinkClick;
-    }
-
-    public void setCostPerUniqueInlineLinkClick(Double costPerUniqueInlineLinkClick) {
-        this.costPerUniqueInlineLinkClick = costPerUniqueInlineLinkClick;
-    }
-
-    public Double getCostPerUniqueOutboundClick() {
-        return costPerUniqueOutboundClick;
-    }
-
-    public void setCostPerUniqueOutboundClick(Double costPerUniqueOutboundClick) {
-        this.costPerUniqueOutboundClick = costPerUniqueOutboundClick;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country == null ? null : country.trim();
-    }
-
-    public Double getCpc() {
-        return cpc;
-    }
-
-    public void setCpc(Double cpc) {
-        this.cpc = cpc;
-    }
-
-    public Double getCpm() {
-        return cpm;
-    }
-
-    public void setCpm(Double cpm) {
-        this.cpm = cpm;
-    }
-
-    public Double getCpp() {
-        return cpp;
-    }
-
-    public void setCpp(Double cpp) {
-        this.cpp = cpp;
-    }
-
-    public Long getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Long createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public Double getCtr() {
-        return ctr;
-    }
-
-    public void setCtr(Double ctr) {
-        this.ctr = ctr;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", accountCurrency=").append(accountCurrency);
-        sb.append(", accountId=").append(accountId);
-        sb.append(", accountName=").append(accountName);
-        sb.append(", actionValues=").append(actionValues);
-        sb.append(", actions=").append(actions);
-        sb.append(", activityRecency=").append(activityRecency);
-        sb.append(", adClickActions=").append(adClickActions);
-        sb.append(", adFormatAsset=").append(adFormatAsset);
-        sb.append(", adId=").append(adId);
-        sb.append(", adImpressionActions=").append(adImpressionActions);
-        sb.append(", adName=").append(adName);
-        sb.append(", adsetId=").append(adsetId);
-        sb.append(", adsetName=").append(adsetName);
-        sb.append(", ageTargeting=").append(ageTargeting);
-        sb.append(", attributionSetting=").append(attributionSetting);
-        sb.append(", auctionBid=").append(auctionBid);
-        sb.append(", auctionCompetitiveness=").append(auctionCompetitiveness);
-        sb.append(", auctionMaxCompetitorBid=").append(auctionMaxCompetitorBid);
-        sb.append(", bodyAsset=").append(bodyAsset);
-        sb.append(", buyingType=").append(buyingType);
-        sb.append(", campaignId=").append(campaignId);
-        sb.append(", campaignName=").append(campaignName);
-        sb.append(", canvasAvgViewPercent=").append(canvasAvgViewPercent);
-        sb.append(", canvasAvgViewTime=").append(canvasAvgViewTime);
-        sb.append(", catalogSegmentActions=").append(catalogSegmentActions);
-        sb.append(", catalogSegmentValue=").append(catalogSegmentValue);
-        sb.append(", catalogSegmentValueMobilePurchaseRoas=").append(catalogSegmentValueMobilePurchaseRoas);
-        sb.append(", catalogSegmentValueOmniPurchaseRoas=").append(catalogSegmentValueOmniPurchaseRoas);
-        sb.append(", catalogSegmentValueWebsitePurchaseRoas=").append(catalogSegmentValueWebsitePurchaseRoas);
-        sb.append(", clicks=").append(clicks);
-        sb.append(", coarseConversionValue=").append(coarseConversionValue);
-        sb.append(", comparisonNode=").append(comparisonNode);
-        sb.append(", conversionValues=").append(conversionValues);
-        sb.append(", conversions=").append(conversions);
-        sb.append(", convertedProductQuantity=").append(convertedProductQuantity);
-        sb.append(", convertedProductValue=").append(convertedProductValue);
-        sb.append(", costPer15SecVideoView=").append(costPer15SecVideoView);
-        sb.append(", costPer2SecContinuousVideoView=").append(costPer2SecContinuousVideoView);
-        sb.append(", costPerActionType=").append(costPerActionType);
-        sb.append(", costPerAdClick=").append(costPerAdClick);
-        sb.append(", costPerConversion=").append(costPerConversion);
-        sb.append(", costPerDdaCountbyConvs=").append(costPerDdaCountbyConvs);
-        sb.append(", costPerInlineLinkClick=").append(costPerInlineLinkClick);
-        sb.append(", costPerInlinePostEngagement=").append(costPerInlinePostEngagement);
-        sb.append(", costPerOneThousandAdImpression=").append(costPerOneThousandAdImpression);
-        sb.append(", costPerOutboundClick=").append(costPerOutboundClick);
-        sb.append(", costPerThruplay=").append(costPerThruplay);
-        sb.append(", costPerUniqueActionType=").append(costPerUniqueActionType);
-        sb.append(", costPerUniqueClick=").append(costPerUniqueClick);
-        sb.append(", costPerUniqueConversion=").append(costPerUniqueConversion);
-        sb.append(", costPerUniqueInlineLinkClick=").append(costPerUniqueInlineLinkClick);
-        sb.append(", costPerUniqueOutboundClick=").append(costPerUniqueOutboundClick);
-        sb.append(", country=").append(country);
-        sb.append(", cpc=").append(cpc);
-        sb.append(", cpm=").append(cpm);
-        sb.append(", cpp=").append(cpp);
-        sb.append(", createdTime=").append(createdTime);
-        sb.append(", ctr=").append(ctr);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+public class CampaignsInsights {
+	    private String accountCurrency;
+	    private String accountId;
+	    private String accountName;
+	    private String actionValues;
+	    private int actions;
+	    private int activityRecency;
+	    private int adClickActions;
+	    private String adFormatAsset;
+	    private String adId;
+	    private int adImpressionActions;
+	    private String adName;
+	    private String adsetId;
+	    private String adsetName;
+	    private String ageTargeting;
+	    private String attributionSetting;
+	    private double auctionBid;
+	    private double auctionCompetitiveness;
+	    private double auctionMaxCompetitorBid;
+	    private String bodyAsset;
+	    private String buyingType;
+	    private String campaignId;
+	    private String campaignName;
+	    private double canvasAvgViewPercent;
+	    private double canvasAvgViewTime;
+	    private int catalogSegmentActions;
+	    private double catalogSegmentValue;
+	    private double catalogSegmentValueMobilePurchaseRoas;
+	    private double catalogSegmentValueOmniPurchaseRoas;
+	    private double catalogSegmentValueWebsitePurchaseRoas;
+	    private int clicks;
+	    private double coarseConversionValue;
+	    private String comparisonNode;
+	    private double conversionValues;
+	    private int conversions;
+	    private int convertedProductQuantity;
+	    private double convertedProductValue;
+	    private double costPer15SecVideoView;
+	    private double costPer2SecContinuousVideoView;
+	    private double costPerActionType;
+	    private double costPerAdClick;
+	    private double costPerConversion;
+	    private double costPerDdaCountbyConvs;
+	    private double costPerInlineLinkClick;
+	    private double costPerInlinePostEngagement;
+	    private double costPerOneThousandAdImpression;
+	    private double costPerOutboundClick;
+	    private double costPerThruplay;
+	    private double costPerUniqueActionType;
+	    private double costPerUniqueClick;
+	    private double costPerUniqueConversion;
+	    private double costPerUniqueInlineLinkClick;
+	    private double costPerUniqueOutboundClick;
+	    private String country;
+	    private double cpc;
+	    private double cpm;
+	    private double cpp;
+	    private long createdTime;
+	    private double ctr;
+		public String getAccountCurrency() {
+			return accountCurrency;
+		}
+		public void setAccountCurrency(String accountCurrency) {
+			this.accountCurrency = accountCurrency;
+		}
+		public String getAccountId() {
+			return accountId;
+		}
+		public void setAccountId(String accountId) {
+			this.accountId = accountId;
+		}
+		public String getAccountName() {
+			return accountName;
+		}
+		public void setAccountName(String accountName) {
+			this.accountName = accountName;
+		}
+		public String getActionValues() {
+			return actionValues;
+		}
+		public void setActionValues(String actionValues) {
+			this.actionValues = actionValues;
+		}
+		public int getActions() {
+			return actions;
+		}
+		public void setActions(int actions) {
+			this.actions = actions;
+		}
+		public int getActivityRecency() {
+			return activityRecency;
+		}
+		public void setActivityRecency(int activityRecency) {
+			this.activityRecency = activityRecency;
+		}
+		public int getAdClickActions() {
+			return adClickActions;
+		}
+		public void setAdClickActions(int adClickActions) {
+			this.adClickActions = adClickActions;
+		}
+		public String getAdFormatAsset() {
+			return adFormatAsset;
+		}
+		public void setAdFormatAsset(String adFormatAsset) {
+			this.adFormatAsset = adFormatAsset;
+		}
+		public String getAdId() {
+			return adId;
+		}
+		public void setAdId(String adId) {
+			this.adId = adId;
+		}
+		public int getAdImpressionActions() {
+			return adImpressionActions;
+		}
+		public void setAdImpressionActions(int adImpressionActions) {
+			this.adImpressionActions = adImpressionActions;
+		}
+		public String getAdName() {
+			return adName;
+		}
+		public void setAdName(String adName) {
+			this.adName = adName;
+		}
+		public String getAdsetId() {
+			return adsetId;
+		}
+		public void setAdsetId(String adsetId) {
+			this.adsetId = adsetId;
+		}
+		public String getAdsetName() {
+			return adsetName;
+		}
+		public void setAdsetName(String adsetName) {
+			this.adsetName = adsetName;
+		}
+		public String getAgeTargeting() {
+			return ageTargeting;
+		}
+		public void setAgeTargeting(String ageTargeting) {
+			this.ageTargeting = ageTargeting;
+		}
+		public String getAttributionSetting() {
+			return attributionSetting;
+		}
+		public void setAttributionSetting(String attributionSetting) {
+			this.attributionSetting = attributionSetting;
+		}
+		public double getAuctionBid() {
+			return auctionBid;
+		}
+		public void setAuctionBid(double auctionBid) {
+			this.auctionBid = auctionBid;
+		}
+		public double getAuctionCompetitiveness() {
+			return auctionCompetitiveness;
+		}
+		public void setAuctionCompetitiveness(double auctionCompetitiveness) {
+			this.auctionCompetitiveness = auctionCompetitiveness;
+		}
+		public double getAuctionMaxCompetitorBid() {
+			return auctionMaxCompetitorBid;
+		}
+		public void setAuctionMaxCompetitorBid(double auctionMaxCompetitorBid) {
+			this.auctionMaxCompetitorBid = auctionMaxCompetitorBid;
+		}
+		public String getBodyAsset() {
+			return bodyAsset;
+		}
+		public void setBodyAsset(String bodyAsset) {
+			this.bodyAsset = bodyAsset;
+		}
+		public String getBuyingType() {
+			return buyingType;
+		}
+		public void setBuyingType(String buyingType) {
+			this.buyingType = buyingType;
+		}
+		public String getCampaignId() {
+			return campaignId;
+		}
+		public void setCampaignId(String campaignId) {
+			this.campaignId = campaignId;
+		}
+		public String getCampaignName() {
+			return campaignName;
+		}
+		public void setCampaignName(String campaignName) {
+			this.campaignName = campaignName;
+		}
+		public double getCanvasAvgViewPercent() {
+			return canvasAvgViewPercent;
+		}
+		public void setCanvasAvgViewPercent(double canvasAvgViewPercent) {
+			this.canvasAvgViewPercent = canvasAvgViewPercent;
+		}
+		public double getCanvasAvgViewTime() {
+			return canvasAvgViewTime;
+		}
+		public void setCanvasAvgViewTime(double canvasAvgViewTime) {
+			this.canvasAvgViewTime = canvasAvgViewTime;
+		}
+		public int getCatalogSegmentActions() {
+			return catalogSegmentActions;
+		}
+		public void setCatalogSegmentActions(int catalogSegmentActions) {
+			this.catalogSegmentActions = catalogSegmentActions;
+		}
+		public double getCatalogSegmentValue() {
+			return catalogSegmentValue;
+		}
+		public void setCatalogSegmentValue(double catalogSegmentValue) {
+			this.catalogSegmentValue = catalogSegmentValue;
+		}
+		public double getCatalogSegmentValueMobilePurchaseRoas() {
+			return catalogSegmentValueMobilePurchaseRoas;
+		}
+		public void setCatalogSegmentValueMobilePurchaseRoas(double catalogSegmentValueMobilePurchaseRoas) {
+			this.catalogSegmentValueMobilePurchaseRoas = catalogSegmentValueMobilePurchaseRoas;
+		}
+		public double getCatalogSegmentValueOmniPurchaseRoas() {
+			return catalogSegmentValueOmniPurchaseRoas;
+		}
+		public void setCatalogSegmentValueOmniPurchaseRoas(double catalogSegmentValueOmniPurchaseRoas) {
+			this.catalogSegmentValueOmniPurchaseRoas = catalogSegmentValueOmniPurchaseRoas;
+		}
+		public double getCatalogSegmentValueWebsitePurchaseRoas() {
+			return catalogSegmentValueWebsitePurchaseRoas;
+		}
+		public void setCatalogSegmentValueWebsitePurchaseRoas(double catalogSegmentValueWebsitePurchaseRoas) {
+			this.catalogSegmentValueWebsitePurchaseRoas = catalogSegmentValueWebsitePurchaseRoas;
+		}
+		public int getClicks() {
+			return clicks;
+		}
+		public void setClicks(int clicks) {
+			this.clicks = clicks;
+		}
+		public double getCoarseConversionValue() {
+			return coarseConversionValue;
+		}
+		public void setCoarseConversionValue(double coarseConversionValue) {
+			this.coarseConversionValue = coarseConversionValue;
+		}
+		public String getComparisonNode() {
+			return comparisonNode;
+		}
+		public void setComparisonNode(String comparisonNode) {
+			this.comparisonNode = comparisonNode;
+		}
+		public double getConversionValues() {
+			return conversionValues;
+		}
+		public void setConversionValues(double conversionValues) {
+			this.conversionValues = conversionValues;
+		}
+		public int getConversions() {
+			return conversions;
+		}
+		public void setConversions(int conversions) {
+			this.conversions = conversions;
+		}
+		public int getConvertedProductQuantity() {
+			return convertedProductQuantity;
+		}
+		public void setConvertedProductQuantity(int convertedProductQuantity) {
+			this.convertedProductQuantity = convertedProductQuantity;
+		}
+		public double getConvertedProductValue() {
+			return convertedProductValue;
+		}
+		public void setConvertedProductValue(double convertedProductValue) {
+			this.convertedProductValue = convertedProductValue;
+		}
+		public double getCostPer15SecVideoView() {
+			return costPer15SecVideoView;
+		}
+		public void setCostPer15SecVideoView(double costPer15SecVideoView) {
+			this.costPer15SecVideoView = costPer15SecVideoView;
+		}
+		public double getCostPer2SecContinuousVideoView() {
+			return costPer2SecContinuousVideoView;
+		}
+		public void setCostPer2SecContinuousVideoView(double costPer2SecContinuousVideoView) {
+			this.costPer2SecContinuousVideoView = costPer2SecContinuousVideoView;
+		}
+		public double getCostPerActionType() {
+			return costPerActionType;
+		}
+		public void setCostPerActionType(double costPerActionType) {
+			this.costPerActionType = costPerActionType;
+		}
+		public double getCostPerAdClick() {
+			return costPerAdClick;
+		}
+		public void setCostPerAdClick(double costPerAdClick) {
+			this.costPerAdClick = costPerAdClick;
+		}
+		public double getCostPerConversion() {
+			return costPerConversion;
+		}
+		public void setCostPerConversion(double costPerConversion) {
+			this.costPerConversion = costPerConversion;
+		}
+		public double getCostPerDdaCountbyConvs() {
+			return costPerDdaCountbyConvs;
+		}
+		public void setCostPerDdaCountbyConvs(double costPerDdaCountbyConvs) {
+			this.costPerDdaCountbyConvs = costPerDdaCountbyConvs;
+		}
+		public double getCostPerInlineLinkClick() {
+			return costPerInlineLinkClick;
+		}
+		public void setCostPerInlineLinkClick(double costPerInlineLinkClick) {
+			this.costPerInlineLinkClick = costPerInlineLinkClick;
+		}
+		public double getCostPerInlinePostEngagement() {
+			return costPerInlinePostEngagement;
+		}
+		public void setCostPerInlinePostEngagement(double costPerInlinePostEngagement) {
+			this.costPerInlinePostEngagement = costPerInlinePostEngagement;
+		}
+		public double getCostPerOneThousandAdImpression() {
+			return costPerOneThousandAdImpression;
+		}
+		public void setCostPerOneThousandAdImpression(double costPerOneThousandAdImpression) {
+			this.costPerOneThousandAdImpression = costPerOneThousandAdImpression;
+		}
+		public double getCostPerOutboundClick() {
+			return costPerOutboundClick;
+		}
+		public void setCostPerOutboundClick(double costPerOutboundClick) {
+			this.costPerOutboundClick = costPerOutboundClick;
+		}
+		public double getCostPerThruplay() {
+			return costPerThruplay;
+		}
+		public void setCostPerThruplay(double costPerThruplay) {
+			this.costPerThruplay = costPerThruplay;
+		}
+		public double getCostPerUniqueActionType() {
+			return costPerUniqueActionType;
+		}
+		public void setCostPerUniqueActionType(double costPerUniqueActionType) {
+			this.costPerUniqueActionType = costPerUniqueActionType;
+		}
+		public double getCostPerUniqueClick() {
+			return costPerUniqueClick;
+		}
+		public void setCostPerUniqueClick(double costPerUniqueClick) {
+			this.costPerUniqueClick = costPerUniqueClick;
+		}
+		public double getCostPerUniqueConversion() {
+			return costPerUniqueConversion;
+		}
+		public void setCostPerUniqueConversion(double costPerUniqueConversion) {
+			this.costPerUniqueConversion = costPerUniqueConversion;
+		}
+		public double getCostPerUniqueInlineLinkClick() {
+			return costPerUniqueInlineLinkClick;
+		}
+		public void setCostPerUniqueInlineLinkClick(double costPerUniqueInlineLinkClick) {
+			this.costPerUniqueInlineLinkClick = costPerUniqueInlineLinkClick;
+		}
+		public double getCostPerUniqueOutboundClick() {
+			return costPerUniqueOutboundClick;
+		}
+		public void setCostPerUniqueOutboundClick(double costPerUniqueOutboundClick) {
+			this.costPerUniqueOutboundClick = costPerUniqueOutboundClick;
+		}
+		public String getCountry() {
+			return country;
+		}
+		public void setCountry(String country) {
+			this.country = country;
+		}
+		public double getCpc() {
+			return cpc;
+		}
+		public void setCpc(double cpc) {
+			this.cpc = cpc;
+		}
+		public double getCpm() {
+			return cpm;
+		}
+		public void setCpm(double cpm) {
+			this.cpm = cpm;
+		}
+		public double getCpp() {
+			return cpp;
+		}
+		public void setCpp(double cpp) {
+			this.cpp = cpp;
+		}
+		public long getCreatedTime() {
+			return createdTime;
+		}
+		public void setCreatedTime(long createdTime) {
+			this.createdTime = createdTime;
+		}
+		public double getCtr() {
+			return ctr;
+		}
+		public void setCtr(double ctr) {
+			this.ctr = ctr;
+		}
+		@Override
+		public String toString() {
+			return "CampaignsInsights [accountCurrency=" + accountCurrency + ", accountId=" + accountId
+					+ ", accountName=" + accountName + ", actionValues=" + actionValues + ", actions=" + actions
+					+ ", activityRecency=" + activityRecency + ", adClickActions=" + adClickActions + ", adFormatAsset="
+					+ adFormatAsset + ", adId=" + adId + ", adImpressionActions=" + adImpressionActions + ", adName="
+					+ adName + ", adsetId=" + adsetId + ", adsetName=" + adsetName + ", ageTargeting=" + ageTargeting
+					+ ", attributionSetting=" + attributionSetting + ", auctionBid=" + auctionBid
+					+ ", auctionCompetitiveness=" + auctionCompetitiveness + ", auctionMaxCompetitorBid="
+					+ auctionMaxCompetitorBid + ", bodyAsset=" + bodyAsset + ", buyingType=" + buyingType
+					+ ", campaignId=" + campaignId + ", campaignName=" + campaignName + ", canvasAvgViewPercent="
+					+ canvasAvgViewPercent + ", canvasAvgViewTime=" + canvasAvgViewTime + ", catalogSegmentActions="
+					+ catalogSegmentActions + ", catalogSegmentValue=" + catalogSegmentValue
+					+ ", catalogSegmentValueMobilePurchaseRoas=" + catalogSegmentValueMobilePurchaseRoas
+					+ ", catalogSegmentValueOmniPurchaseRoas=" + catalogSegmentValueOmniPurchaseRoas
+					+ ", catalogSegmentValueWebsitePurchaseRoas=" + catalogSegmentValueWebsitePurchaseRoas + ", clicks="
+					+ clicks + ", coarseConversionValue=" + coarseConversionValue + ", comparisonNode=" + comparisonNode
+					+ ", conversionValues=" + conversionValues + ", conversions=" + conversions
+					+ ", convertedProductQuantity=" + convertedProductQuantity + ", convertedProductValue="
+					+ convertedProductValue + ", costPer15SecVideoView=" + costPer15SecVideoView
+					+ ", costPer2SecContinuousVideoView=" + costPer2SecContinuousVideoView + ", costPerActionType="
+					+ costPerActionType + ", costPerAdClick=" + costPerAdClick + ", costPerConversion="
+					+ costPerConversion + ", costPerDdaCountbyConvs=" + costPerDdaCountbyConvs
+					+ ", costPerInlineLinkClick=" + costPerInlineLinkClick + ", costPerInlinePostEngagement="
+					+ costPerInlinePostEngagement + ", costPerOneThousandAdImpression=" + costPerOneThousandAdImpression
+					+ ", costPerOutboundClick=" + costPerOutboundClick + ", costPerThruplay=" + costPerThruplay
+					+ ", costPerUniqueActionType=" + costPerUniqueActionType + ", costPerUniqueClick="
+					+ costPerUniqueClick + ", costPerUniqueConversion=" + costPerUniqueConversion
+					+ ", costPerUniqueInlineLinkClick=" + costPerUniqueInlineLinkClick + ", costPerUniqueOutboundClick="
+					+ costPerUniqueOutboundClick + ", country=" + country + ", cpc=" + cpc + ", cpm=" + cpm + ", cpp="
+					+ cpp + ", createdTime=" + createdTime + ", ctr=" + ctr + "]";
+		}
 }
