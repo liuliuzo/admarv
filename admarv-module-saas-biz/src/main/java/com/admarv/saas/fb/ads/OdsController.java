@@ -169,7 +169,7 @@ public class OdsController {
      * 
      * @return
      */
-    @RequestMapping(value = "/admav/leadgenEdit", method = RequestMethod.POST)
+    @RequestMapping(value = "/admarv/leadgenEdit", method = RequestMethod.POST)
     public String leadgenEdit(@RequestBody ReqLeadgenEdit reqLeadgenEdit) {
         log.info("/admav/leadgenEdit :{}", reqLeadgenEdit);
         Integer id = reqLeadgenEdit.getId();
@@ -199,7 +199,7 @@ public class OdsController {
     /**
      * 查询分配用户
      */
-    @RequestMapping(value = "/admav/queryUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/admarv/queryUser", method = RequestMethod.GET)
     public String leadgenAllocate() {
         log.info("/admav/queryUser leadgenAllocate");
         List<RespSysUser> listRespSysUser = Lists.newArrayList();
@@ -222,7 +222,7 @@ public class OdsController {
     /**
      * 广告线索询盘任务分配
      */
-    @RequestMapping(value = "/admav/leadgenAllocate", method = RequestMethod.POST)
+    @RequestMapping(value = "/admarv/leadgenAllocate", method = RequestMethod.POST)
     public String leadgenAllocate(@RequestBody ReqLeadgenAllocate reqLeadgenAllocate) {
         log.info("/admav/reqLeadgenAllocate :{}", reqLeadgenAllocate);
         Integer id = reqLeadgenAllocate.getId();
@@ -243,7 +243,7 @@ public class OdsController {
      * 获取用户所有广告账户详情
      * 
      */
-    @RequestMapping(value = "/admav/adaccounts", method = RequestMethod.GET)
+    @RequestMapping(value = "/admarv/adaccounts", method = RequestMethod.GET)
     public String adaccountDetail(String user) {
         log.info("/admav/adaccountDetail user:{}", user);
         FacebookClient facebookClient = facebookClientService.getClientByUser(user);
