@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS sys_user;
 CREATE TABLE `sys_user` (
-  `id` INT AUTO_INCREMENT COMMENT '主键id',
+  `id` varchar(32) NOT NULL COMMENT '主键id',
+  `user_id` varchar(32) DEFAULT NULL COMMENT '用户id',
   `user_name` varchar(100) DEFAULT NULL COMMENT '登录账号',
   `real_name` varchar(100) DEFAULT NULL COMMENT '真实姓名',
   `password` varchar(255) DEFAULT NULL COMMENT '密码',
@@ -29,6 +30,32 @@ CREATE TABLE `sys_user` (
   KEY `idx_status` (`status`) USING BTREE,
   KEY `idx_del_flag` (`del_flag`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 COMMENT='用户表';
+
+CREATE TABLE `sys_role` (
+  `id` varchar(32) NOT NULL COMMENT '主键id',
+  `role_name` varchar(200) DEFAULT NULL COMMENT '角色名称',
+  `role_code` varchar(100) NOT NULL COMMENT '角色编码',
+  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  `create_by` varchar(32) DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` varchar(32) DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `tenant_id` int(10) DEFAULT '0' COMMENT '租户ID',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `uniq_sys_role_role_code` (`role_code`) USING BTREE,
+  KEY `idx_sr_role_code` (`role_code`) USING BTREE
+) ENGINE=InnoDB COMMENT='角色表';
+
+CREATE TABLE `sys_user_role` (
+  `id` varchar(32) NOT NULL COMMENT '主键id',
+  `user_id` varchar(32) DEFAULT NULL COMMENT '用户id',
+  `role_id` varchar(32) DEFAULT NULL COMMENT '角色id',
+  `tenant_id` int(10) DEFAULT '0' COMMENT '租户ID',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `idx_sur_user_id` (`user_id`) USING BTREE,
+  KEY `idx_sur_role_id` (`role_id`) USING BTREE,
+  KEY `idx_sur_user_role_id` (`user_id`,`role_id`) USING BTREE
+) ENGINE=InnoDB COMMENT='用户角色表';
 
 DROP TABLE IF EXISTS `lead_gen`;
 CREATE TABLE `lead_gen` (
