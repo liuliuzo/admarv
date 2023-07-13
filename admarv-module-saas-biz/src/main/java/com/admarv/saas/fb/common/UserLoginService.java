@@ -20,13 +20,17 @@ public class UserLoginService {
     @Autowired
     private SysUserMapper sysUserMapper;
 
-    public SysUser login(String userNam, String pswrd) {
+    public boolean login(String userNam, String pswrd) {
         log.info("username:{}, password:{}", userNam, pswrd);
         SysUser selectEntity = new SysUser();
         selectEntity.setUserName(userNam);
         selectEntity.setPassword(pswrd);
         SysUser sysUser = sysUserMapper.selectOneByEntity(selectEntity);
         log.info("sysUser:{}", sysUser);
-        return sysUser;
+        if (sysUser != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
