@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.admarv.saas.fb.common.FacebookClientService;
 import com.admarv.saas.mapper.CampaignsInsightsMapper;
 import com.admarv.saas.model.CampaignsInsights;
+import com.restfb.Connection;
 import com.restfb.FacebookClient;
+import com.restfb.types.User;
 import com.restfb.types.ads.AdAccount;
 import com.restfb.types.ads.Campaign;
 
@@ -34,14 +36,18 @@ public class CampaignsService {
     public void syncCampaignsInsights(String user) {
         log.info("getCampaignsInsights start");
         FacebookClient facebookClient = facebookClientService.getClientByUser(user);
+        // 获取登录用户的信息
+        User me = facebookClient.fetchObject("me", User.class);
         // 获取当前用户的广告账户列表
-        List<AdAccount> adAccounts = facebookClient.fetchObject("me/adaccounts", List.class);
+        Connection<AdAccount> connAdAccount = facebookClient.fetchConnection(me.getId() + "/adaccounts", AdAccount.class);
+        List<AdAccount> adAccounts = connAdAccount.getData();
         for (AdAccount adAccount : adAccounts) {
             String id = adAccount.getId();
             log.info("Account ID: {}", id);
             log.info("Account Name: {}", adAccount.getName());
             // 获取广告账户的广告系列列表
-            List<Campaign> campaigns = facebookClient.fetchObject(id + "/campaigns", List.class);
+            Connection<Campaign> connCampaigns = facebookClient.fetchConnection(id + "/campaigns", Campaign.class);
+            List<Campaign> campaigns = connCampaigns.getData();
             for (Campaign campaign : campaigns) {
                 String campaignId = campaign.getId();
                 String name = campaign.getName();
