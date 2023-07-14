@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS sys_user;
+DROP TABLE IF EXISTS 'sys_user';
 CREATE TABLE `sys_user` (
   `id` varchar(32) NOT NULL COMMENT '主键id',
   `user_id` varchar(32) DEFAULT NULL COMMENT '用户id',
@@ -31,6 +31,7 @@ CREATE TABLE `sys_user` (
   KEY `idx_del_flag` (`del_flag`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 COMMENT='用户表';
 
+DROP TABLE IF EXISTS sys_role;
 CREATE TABLE `sys_role` (
   `id` varchar(32) NOT NULL COMMENT '主键id',
   `role_name` varchar(200) DEFAULT NULL COMMENT '角色名称',
