@@ -35,9 +35,6 @@ public class DashBoardController {
     @RequestMapping(value = "/admarv/dashboard", method = RequestMethod.GET)
     public String auth(String user) {
         log.info("/admarv/dashboard user:{}", user);
-        
-        
-        
         DashBoard dashBoard = new DashBoard();
         Response response = new Response();
         response.setCode("200");
