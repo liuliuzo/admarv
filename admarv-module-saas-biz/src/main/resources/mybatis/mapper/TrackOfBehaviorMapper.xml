@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.TrackOfBehaviorMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.TrackOfBehavior">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="action" jdbcType="VARCHAR" property="action" />
+    <result column="lead_id" jdbcType="VARCHAR" property="leadId" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from track_of_behavior
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.TrackOfBehavior">
+    insert into track_of_behavior (id, date, time, 
+      action, lead_id, ip, 
+      del_flag, create_by, create_time, 
+      update_by, update_time)
+    values (#{id,jdbcType=INTEGER}, #{date,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
+      #{action,jdbcType=VARCHAR}, #{leadId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.TrackOfBehavior">
+    update track_of_behavior
+    set date = #{date,jdbcType=VARCHAR},
+      time = #{time,jdbcType=VARCHAR},
+      action = #{action,jdbcType=VARCHAR},
+      lead_id = #{leadId,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, date, time, action, lead_id, ip, del_flag, create_by, create_time, update_by, 
+    update_time
+    from track_of_behavior
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, date, time, action, lead_id, ip, del_flag, create_by, create_time, update_by, 
+    update_time
+    from track_of_behavior
+  </select>
+  
+    <select id="selectByEntity" parameterType="com.admarv.saas.model.TrackOfBehavior" resultMap="BaseResultMap">
+      select * from track_of_behavior where 1=1
+      <if test="date != null">
+       and date = #{date,jdbcType=VARCHAR}
+      </if>
+      <if test="time != null">
+       and time = #{time,jdbcType=VARCHAR}
+      </if>
+      <if test="action != null">
+       and action = #{action,jdbcType=VARCHAR}
+      </if>
+      <if test="leadId != null">
+       and lead_id = #{leadId,jdbcType=VARCHAR}
+      </if>
+      <if test="delFlag != null">
+       and del_flag = #{delFlag,jdbcType=BIT}
+      </if>
+    </select>
+    
+    <select id="selectOneByEntity" parameterType="com.admarv.saas.model.TrackOfBehavior" resultMap="BaseResultMap">
+       select * from track_of_behavior where 1=1
+       <if test="date != null">
+        and date = #{date,jdbcType=VARCHAR}
+       </if>
+       <if test="time != null">
+        and time = #{time,jdbcType=VARCHAR}
+       </if>
+       <if test="action != null">
+        and action = #{action,jdbcType=VARCHAR}
+       </if>
+       <if test="leadId != null">
+        and lead_id = #{leadId,jdbcType=VARCHAR}
+       </if>
+       <if test="delFlag != null">
+         and del_flag = #{delFlag,jdbcType=BIT}
+       </if>
+    </select>
+    
+</mapper>

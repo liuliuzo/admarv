@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.AdaccountPageInfoMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.AdaccountPageInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ad_account_id" jdbcType="VARCHAR" property="adAccountId" />
+    <result column="ad_account_name" jdbcType="VARCHAR" property="adAccountName" />
+    <result column="page_id" jdbcType="VARCHAR" property="pageId" />
+    <result column="page_name" jdbcType="VARCHAR" property="pageName" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from adaccount_page_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.AdaccountPageInfo">
+    insert into adaccount_page_info (id, ad_account_id, ad_account_name, 
+      page_id, page_name, user_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{adAccountId,jdbcType=VARCHAR}, #{adAccountName,jdbcType=VARCHAR}, 
+      #{pageId,jdbcType=VARCHAR}, #{pageName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.AdaccountPageInfo">
+    update adaccount_page_info
+    set ad_account_id = #{adAccountId,jdbcType=VARCHAR},
+      ad_account_name = #{adAccountName,jdbcType=VARCHAR},
+      page_id = #{pageId,jdbcType=VARCHAR},
+      page_name = #{pageName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, ad_account_id, ad_account_name, page_id, page_name, user_id
+    from adaccount_page_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, ad_account_id, ad_account_name, page_id, page_name, user_id
+    from adaccount_page_info
+  </select>
+
+  <select id="selectByEntity" parameterType="com.admarv.saas.model.AdaccountPageInfo" resultMap="BaseResultMap">
+      select * from adaccount_page_info where 1=1
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+       and user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="pageId != null">
+       and page_id = #{pageId,jdbcType=VARCHAR}
+      </if>
+      <if test="pageName != null">
+       and page_name = #{pageName,jdbcType=VARCHAR}
+      </if>
+      <if test="adAccountId != null">
+       and ad_account_id = #{adAccountId,jdbcType=VARCHAR}
+      </if>
+      <if test="adAccountName != null">
+       and ad_account_name = #{adAccountName,jdbcType=VARCHAR}
+      </if>
+ </select>
+ 
+ <select id="selectOneByEntity" parameterType="com.admarv.saas.model.AdaccountPageInfo" resultMap="BaseResultMap">
+     select * from adaccount_page_info where 1=1
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+       and user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="pageId != null">
+       and page_id = #{pageId,jdbcType=VARCHAR}
+      </if>
+      <if test="pageName != null">
+       and page_name = #{pageName,jdbcType=VARCHAR}
+      </if>
+      <if test="adAccountId != null">
+       and ad_account_id = #{adAccountId,jdbcType=VARCHAR}
+      </if>
+      <if test="adAccountName != null">
+       and ad_account_name = #{adAccountName,jdbcType=VARCHAR}
+      </if>
+ </select>
+  
+</mapper>

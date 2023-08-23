@@ -7,15 +7,15 @@ package com.admarv.saas.fb.common.dto.req;
  */
 public class ReqLogin {
     
-    private String userNam;
+    private String userName;
     private String pswrd;
     
-    public String getUserNam() {
-        return userNam;
+    public String getUserName() {
+        return userName;
     }
     
-    public void setUserNam(String userNam) {
-        this.userNam = userNam;
+	public void setUserName(String userName) {
+        this.userName = userName;
     }
     
     public String getPswrd() {
@@ -28,7 +28,7 @@ public class ReqLogin {
     
     @Override
     public String toString() {
-        return "ReqLogin [userNam=" + userNam + ", pswrd=" + pswrd + "]";
+        return "ReqLogin [userNam=" + userName + ", pswrd=" + pswrd + "]";
     }
 
 }

@@ -12,6 +12,8 @@ public class SysUser implements Serializable {
     
     private Integer id;
 
+    private String userId;
+
     private String userName;
 
     private String realName;
@@ -60,6 +62,14 @@ public class SysUser implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getUserName() {
@@ -229,6 +239,7 @@ public class SysUser implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
+        sb.append(", userId=").append(userId);
         sb.append(", userName=").append(userName);
         sb.append(", realName=").append(realName);
         sb.append(", password=").append(password);

@@ -15,7 +15,7 @@ import org.springframework.web.filter.CorsFilter;
 public class CorsConfig {
 
     /**
-     * TODO: 目前跨域访问关闭
+     * 目前跨域访问关闭
      */
     @Bean
     public CorsFilter corsFilter() {

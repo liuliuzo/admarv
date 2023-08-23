@@ -3,6 +3,7 @@
 <mapper namespace="com.admarv.saas.mapper.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.admarv.saas.model.SysUser">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -29,26 +30,27 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.admarv.saas.model.SysUser">
-    insert into sys_user (id, user_name, real_name, 
-      password, salt, avatar, 
-      birthday, sex, email, 
-      phone, org_code, status, 
-      third_id, third_type, telephone, 
-      fb_token, del_flag, create_by, 
-      create_time, update_by, update_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=TIMESTAMP}, #{sex,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, 
-      #{thirdId,jdbcType=VARCHAR}, #{thirdType,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{fbToken,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into sys_user (id, user_id, user_name, 
+      real_name, password, salt, 
+      avatar, birthday, sex, 
+      email, phone, org_code, 
+      status, third_id, third_type, 
+      telephone, fb_token, del_flag, 
+      create_by, create_time, update_by, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{sex,jdbcType=BIT}, 
+      #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{thirdId,jdbcType=VARCHAR}, #{thirdType,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{fbToken,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.SysUser">
     update sys_user
-    set user_name = #{userName,jdbcType=VARCHAR},
+    set user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       salt = #{salt,jdbcType=VARCHAR},
@@ -71,23 +73,28 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, user_name, real_name, password, salt, avatar, birthday, sex, email, phone, 
-    org_code, status, third_id, third_type, telephone, fb_token, del_flag, create_by, 
-    create_time, update_by, update_time
+    select id, user_id, user_name, real_name, password, salt, avatar, birthday, sex, 
+    email, phone, org_code, status, third_id, third_type, telephone, fb_token, del_flag, 
+    create_by, create_time, update_by, update_time
     from sys_user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, user_name, real_name, password, salt, avatar, birthday, sex, email, phone, 
-    org_code, status, third_id, third_type, telephone, fb_token, del_flag, create_by, 
-    create_time, update_by, update_time
+    select id, user_id, user_name, real_name, password, salt, avatar, birthday, sex, 
+    email, phone, org_code, status, third_id, third_type, telephone, fb_token, del_flag, 
+    create_by, create_time, update_by, update_time
     from sys_user
   </select>
-  
   <select id="selectByEntity" parameterType="com.admarv.saas.model.SysUser" resultMap="BaseResultMap">
-       select * from sys_user where 1=1
+     select * from sys_user where 1=1
       <if test="id != null">
        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+       and user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+       and user_name = #{userName,jdbcType=VARCHAR}
       </if>
       <if test="userName != null">
        and user_name = #{userName,jdbcType=VARCHAR}
@@ -152,6 +159,9 @@
        select * from sys_user where 1=1
       <if test="id != null">
        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="userId != null">
+       and user_id = #{userId,jdbcType=VARCHAR}
       </if>
       <if test="userName != null">
        and user_name = #{userName,jdbcType=VARCHAR}

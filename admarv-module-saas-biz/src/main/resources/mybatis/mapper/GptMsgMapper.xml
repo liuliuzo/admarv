@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.GptMsgMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.GptMsg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="msg" jdbcType="LONGVARCHAR" property="msg" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="conversation_id" jdbcType="VARCHAR" property="conversationId" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gpt_msg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.GptMsg">
+    insert into gpt_msg (id, user_id, conversation_id, 
+      del_flag, create_by, create_time, 
+      update_by, update_time, msg
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{conversationId,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{msg,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.GptMsg">
+    update gpt_msg
+    set user_id = #{userId,jdbcType=VARCHAR},
+      conversation_id = #{conversationId,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      msg = #{msg,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, user_id, conversation_id, del_flag, create_by, create_time, update_by, 
+    update_time, msg
+    from gpt_msg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, user_id, conversation_id, del_flag, create_by, create_time, update_by, 
+    update_time, msg
+    from gpt_msg
+  </select>
+   
+ <select id="selectByEntity" parameterType="com.admarv.saas.model.GptMsg" resultMap="BaseResultMap">
+	select * from gpt_msg where 1=1
+	<if test="msg != null">
+	     and msg = #{msg,jdbcType=VARCHAR}
+	</if>
+	<if test="userId != null">
+	     and user_id = #{userId,jdbcType=VARCHAR}
+	</if>
+	<if test="conversationId != null">
+	     and conversation_id = #{conversationId,jdbcType=VARCHAR}
+	</if>
+ </select>
+ 
+ <select id="selectOneByEntity" parameterType="com.admarv.saas.model.GptMsg" resultMap="BaseResultMap">
+	select * from gpt_msg where 1=1
+    <if test="msg != null">
+	     and msg = #{msg,jdbcType=VARCHAR}
+	</if>
+	<if test="userId != null">
+	     and user_id = #{userId,jdbcType=VARCHAR}
+	</if>
+	<if test="conversationId != null">
+	     and conversation_id = #{conversationId,jdbcType=VARCHAR}
+	</if>
+ </select>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.WhatsappMsgMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.WhatsappMsg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="whatsapp_from" jdbcType="VARCHAR" property="whatsappFrom" />
+    <result column="whatsapp_to" jdbcType="VARCHAR" property="whatsappTo" />
+    <result column="msg" jdbcType="LONGVARCHAR" property="msg" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from whatsapp_msg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.WhatsappMsg">
+    insert into whatsapp_msg (id, whatsapp_from, whatsapp_to, 
+      msg)
+    values (#{id,jdbcType=INTEGER}, #{whatsappFrom,jdbcType=VARCHAR}, #{whatsappTo,jdbcType=VARCHAR}, 
+      #{msg,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.WhatsappMsg">
+    update whatsapp_msg
+    set whatsapp_from = #{whatsappFrom,jdbcType=VARCHAR},
+      whatsapp_to = #{whatsappTo,jdbcType=VARCHAR},
+      msg = #{msg,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, whatsapp_from, whatsapp_to, msg
+    from whatsapp_msg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, whatsapp_from, whatsapp_to, msg
+    from whatsapp_msg
+  </select>
+  
+  <select id="selectByEntity" parameterType="com.admarv.saas.model.WhatsappMsg" resultMap="BaseResultMap">
+      select * from whatsapp_msg where 1=1
+      <if test="whatsappFrom != null">
+       and whatsapp_from = #{whatsappFrom,jdbcType=VARCHAR}
+      </if>
+      <if test="whatsappTo != null">
+       and whatsapp_to = #{whatsappTo,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+       and msg = #{msg,jdbcType=LONGVARCHAR}
+      </if>
+ </select>
+ 
+ <select id="selectOneByEntity" parameterType="com.admarv.saas.model.WhatsappMsg" resultMap="BaseResultMap">
+     select * from whatsapp_msg where 1=1
+      <if test="whatsappFrom != null">
+       and whatsapp_from = #{whatsappFrom,jdbcType=VARCHAR}
+      </if>
+      <if test="whatsappTo != null">
+       and whatsapp_to = #{whatsappTo,jdbcType=VARCHAR}
+      </if>
+      <if test="msg != null">
+       and msg = #{msg,jdbcType=LONGVARCHAR}
+      </if>
+  </select>
+
+</mapper>

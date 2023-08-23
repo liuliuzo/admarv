@@ -11,15 +11,27 @@ import java.util.Date;
  */
 public class LeadGen implements Serializable {
     
-    /**
-     * 
-     */
     private static final long serialVersionUID = -8187470259614523213L;
 
     /**
      * 询盘单ID自增主键
      */
     private Integer id;
+    
+    /**
+     * 广告系列ID
+     */
+    private String campaignId;
+    
+    /**
+     * 广告ID
+     */
+    private String adId;
+    
+    /**
+     * 广告组ID
+     */
+    private String adsetId;
     
     /**
      * 广告线索询盘Id
@@ -30,12 +42,12 @@ public class LeadGen implements Serializable {
      * 姓名
      */
     private String name;
-
+    
     /**
      * 邮件
      */
     private String email;
-
+    
     /**
      * 联系方式
      */
@@ -45,35 +57,65 @@ public class LeadGen implements Serializable {
      * 创建时间
      */
     private String crteTm;
-
+    
+    /**
+     * 创建日期
+     */
+    private String crteDt;
+    
     /**
      * 阅读状态：01-已读，02-未读
      */
     private String leadStat;
-
+    
     /**
      * 国家
      */
     private String regn;
-
+    
     /**
      * 跟踪状态：01-待跟进，02-已沟通，03-已报价，04-已成交
      */
     private String flwpStat;
-
+    
     /**
      * 来源
      */
     private String rsrc;
-
+    
     /**
      * 表单编号
      */
     private String formId;
-
-    private String owner;
-
+    
+    /**
+     * 公共主页Id
+     */
+    private String pageId;
+    
+    /**
+     * 跟单员ID
+     */
+    private String ownerId;
+    
+    /**
+     * 跟单员姓名
+     */
+    private String ownerName;
+    
+    private String userId;
+    
+    /**
+     * 询盘所属的sass平台用户名称
+     */
     private String userName;
+    
+    /**
+     * 询盘质量
+     */
+    private String leadAuality;
+    
+    private String customer;
 
     private Boolean delFlag;
 
@@ -84,7 +126,13 @@ public class LeadGen implements Serializable {
     private String updateBy;
 
     private Date updateTime;
-
+    
+    private String startDate;
+    
+    private String endDate;
+    
+    private String otherFields;
+    
     public Integer getId() {
         return id;
     }
@@ -133,6 +181,14 @@ public class LeadGen implements Serializable {
         this.crteTm = crteTm == null ? null : crteTm.trim();
     }
 
+    public String getCrteDt() {
+        return crteDt;
+    }
+
+    public void setCrteDt(String crteDt) {
+        this.crteDt = crteDt == null ? null : crteDt.trim();
+    }
+
     public String getLeadStat() {
         return leadStat;
     }
@@ -173,12 +229,36 @@ public class LeadGen implements Serializable {
         this.formId = formId == null ? null : formId.trim();
     }
 
-    public String getOwner() {
-        return owner;
+    public String getPageId() {
+        return pageId;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner == null ? null : owner.trim();
+    public void setPageId(String pageId) {
+        this.pageId = pageId == null ? null : pageId.trim();
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId == null ? null : ownerId.trim();
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName == null ? null : ownerName.trim();
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getUserName() {
@@ -187,6 +267,46 @@ public class LeadGen implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getLeadAuality() {
+        return leadAuality;
+    }
+
+    public void setLeadAuality(String leadAuality) {
+        this.leadAuality = leadAuality == null ? null : leadAuality.trim();
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+
+    public String getCampaignId() {
+        return campaignId;
+    }
+
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId == null ? null : campaignId.trim();
+    }
+
+    public String getAdId() {
+        return adId;
+    }
+
+    public void setAdId(String adId) {
+        this.adId = adId == null ? null : adId.trim();
+    }
+
+    public String getAdsetId() {
+        return adsetId;
+    }
+
+    public void setAdsetId(String adsetId) {
+        this.adsetId = adsetId == null ? null : adsetId.trim();
     }
 
     public Boolean getDelFlag() {
@@ -229,32 +349,39 @@ public class LeadGen implements Serializable {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", leadId=").append(leadId);
-        sb.append(", name=").append(name);
-        sb.append(", email=").append(email);
-        sb.append(", cntct=").append(cntct);
-        sb.append(", crteTm=").append(crteTm);
-        sb.append(", leadStat=").append(leadStat);
-        sb.append(", regn=").append(regn);
-        sb.append(", flwpStat=").append(flwpStat);
-        sb.append(", rsrc=").append(rsrc);
-        sb.append(", formId=").append(formId);
-        sb.append(", owner=").append(owner);
-        sb.append(", userName=").append(userName);
-        sb.append(", delFlag=").append(delFlag);
-        sb.append(", createBy=").append(createBy);
-        sb.append(", createTime=").append(createTime);
-        sb.append(", updateBy=").append(updateBy);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public String getStartDate() {
+        return startDate;
     }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+	public String getOtherFields() {
+		return otherFields;
+	}
+
+	public void setOtherFields(String otherFields) {
+		this.otherFields = otherFields;
+	}
+
+	@Override
+	public String toString() {
+		return "LeadGen [id=" + id + ", campaignId=" + campaignId + ", adId=" + adId + ", adsetId=" + adsetId
+				+ ", leadId=" + leadId + ", name=" + name + ", email=" + email + ", cntct=" + cntct + ", crteTm="
+				+ crteTm + ", crteDt=" + crteDt + ", leadStat=" + leadStat + ", regn=" + regn + ", flwpStat=" + flwpStat
+				+ ", rsrc=" + rsrc + ", formId=" + formId + ", pageId=" + pageId + ", ownerId=" + ownerId
+				+ ", ownerName=" + ownerName + ", userId=" + userId + ", userName=" + userName + ", leadAuality="
+				+ leadAuality + ", customer=" + customer + ", delFlag=" + delFlag + ", createBy=" + createBy
+				+ ", createTime=" + createTime + ", updateBy=" + updateBy + ", updateTime=" + updateTime
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", otherFields=" + otherFields + "]";
+	}
 }

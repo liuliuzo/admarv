@@ -18,6 +18,12 @@ public class DashBoard {
      */
     private AdsOverview adsOverview;
     
+    
+    /**
+     * FB资产情况
+     */
+    private FBAssetsSituation fbAssetsSituation;
+    
     /**
      * 周趋势
      */
@@ -32,11 +38,6 @@ public class DashBoard {
      * 季度趋势
      */
     private QuarterTrend quarterTrend;
-    
-    /**
-     * 资产情况
-     */
-    private AssetsSituation assetsSituation;
 
     public KeyData getKeyData() {
         return keyData;
@@ -78,19 +79,19 @@ public class DashBoard {
         this.quarterTrend = quarterTrend;
     }
 
-    public AssetsSituation getAssetsSituation() {
-        return assetsSituation;
+    public FBAssetsSituation getFbAssetsSituation() {
+        return fbAssetsSituation;
     }
 
-    public void setAssetsSituation(AssetsSituation assetsSituation) {
-        this.assetsSituation = assetsSituation;
+    public void setFbAssetsSituation(FBAssetsSituation fbAssetsSituation) {
+        this.fbAssetsSituation = fbAssetsSituation;
     }
 
     @Override
     public String toString() {
         return "DashBoard [keyData=" + keyData + ", adsOverview=" + adsOverview + ", weekTrend=" + weekTrend
-                + ", monthlyTrend=" + monthlyTrend + ", quarterTrend=" + quarterTrend + ", assetsSituation="
-                + assetsSituation + "]";
+                + ", monthlyTrend=" + monthlyTrend + ", quarterTrend=" + quarterTrend + ", fbAssetsSituation="
+                + fbAssetsSituation + "]";
     }
 
 }

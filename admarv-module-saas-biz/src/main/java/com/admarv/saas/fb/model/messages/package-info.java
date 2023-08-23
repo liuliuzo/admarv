@@ -1,0 +1,1 @@
+package com.admarv.saas.fb.model.messages;

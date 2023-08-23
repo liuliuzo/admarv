@@ -1,0 +1,39 @@
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "106691152524916",
+      "changes": [
+        {
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "15550472452",
+              "phone_number_id": "111999771988887"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Dahui"
+                },
+                "wa_id": "8618912602167"
+              }
+            ],
+            "messages": [
+              {
+                "from": "8618912602167",
+                "id": "wamid.HBgNODYxODkxMjYwMjE2NxUCABIYFDNBNzRGRjFCQTdCNTQ2N0I2OThFAA==",
+                "timestamp": "1691403364",
+                "text": {
+                  "body": "2"
+                },
+                "type": "text"
+              }
+            ]
+          },
+          "field": "messages"
+        }
+      ]
+    }
+  ]
+}

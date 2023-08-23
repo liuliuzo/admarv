@@ -16,7 +16,7 @@ public class ReqSend {
     private List<String> fileList;
     private String msg;
     private String pageId;
-    private String user;
+    private String userId;
     
     public List<String> getFileList() {
         return fileList;
@@ -41,25 +41,18 @@ public class ReqSend {
     public void setPageId(String pageId) {
         this.pageId = pageId;
     }
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "ReqSend [fileList=" + fileList + ", msg=" + msg + ", pageId=" + pageId + ", userId=" + userId + "]";
+	}
     
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public static void main(String[] args) throws Exception {
-        ReqSend reqSend = new ReqSend();
-        List<String> fileList = new ArrayList<>();
-        fileList.add("/www/wwwroot/liuliu/fb/123.png");
-        reqSend.setFileList(fileList);
-        reqSend.setMsg("hello world");
-        reqSend.setPageId("101151723027483");
-        reqSend.setUser("1");
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(reqSend);
-        System.out.println(json);
-    }
 }

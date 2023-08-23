@@ -73,4 +73,9 @@ public class DateUtils {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
         return format.format(date);
     }
+    
+    public static void main(String[] args) {
+        String test = DateUtils.dateToString(new Date(), DateUtils.PATTERN_DEFAULT);
+        System.out.println(test);
+    }
 }

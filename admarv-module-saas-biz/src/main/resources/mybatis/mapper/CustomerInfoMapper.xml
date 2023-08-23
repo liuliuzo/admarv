@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.CustomerInfoMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.CustomerInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="cntct" jdbcType="VARCHAR" property="cntct" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="fixed_phone" jdbcType="VARCHAR" property="fixedPhone" />
+    <result column="whatsapp" jdbcType="VARCHAR" property="whatsapp" />
+    <result column="facebook" jdbcType="VARCHAR" property="facebook" />
+    <result column="customer_quality" jdbcType="VARCHAR" property="customerQuality" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="skype" jdbcType="VARCHAR" property="skype" />
+    <result column="twitter" jdbcType="VARCHAR" property="twitter" />
+    <result column="customer_status" jdbcType="VARCHAR" property="customerStatus" />
+    <result column="customer_source" jdbcType="VARCHAR" property="customerSource" />
+    <result column="other_remarks" jdbcType="VARCHAR" property="otherRemarks" />
+    <result column="assigned_to" jdbcType="VARCHAR" property="assignedTo" />
+    <result column="last_contact_time" jdbcType="TIMESTAMP" property="lastContactTime" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="linkedin" jdbcType="VARCHAR" property="linkedin" />
+    <result column="company_email" jdbcType="VARCHAR" property="companyEmail" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="company_size" jdbcType="VARCHAR" property="companySize" />
+    <result column="product_range" jdbcType="VARCHAR" property="productRange" />
+    <result column="business_scope" jdbcType="VARCHAR" property="businessScope" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.admarv.saas.model.CustomerInfo">
+    insert into customer_info (id, name, email, 
+      cntct, owner_id, owner_name, 
+      position, fixed_phone, whatsapp, 
+      facebook, customer_quality, country, 
+      gender, birthday, phone_number, 
+      skype, twitter, customer_status, 
+      customer_source, other_remarks, assigned_to, 
+      last_contact_time, company_name, industry, 
+      linkedin, company_email, website, 
+      address, company_size, product_range, 
+      business_scope, del_flag, create_by, 
+      create_time, update_by, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{cntct,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{fixedPhone,jdbcType=VARCHAR}, #{whatsapp,jdbcType=VARCHAR}, 
+      #{facebook,jdbcType=VARCHAR}, #{customerQuality,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{skype,jdbcType=VARCHAR}, #{twitter,jdbcType=VARCHAR}, #{customerStatus,jdbcType=VARCHAR}, 
+      #{customerSource,jdbcType=VARCHAR}, #{otherRemarks,jdbcType=VARCHAR}, #{assignedTo,jdbcType=VARCHAR}, 
+      #{lastContactTime,jdbcType=TIMESTAMP}, #{companyName,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, 
+      #{linkedin,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{companySize,jdbcType=VARCHAR}, #{productRange,jdbcType=VARCHAR}, 
+      #{businessScope,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.CustomerInfo">
+    update customer_info
+    set name = #{name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      cntct = #{cntct,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
+      owner_name = #{ownerName,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      fixed_phone = #{fixedPhone,jdbcType=VARCHAR},
+      whatsapp = #{whatsapp,jdbcType=VARCHAR},
+      facebook = #{facebook,jdbcType=VARCHAR},
+      customer_quality = #{customerQuality,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      skype = #{skype,jdbcType=VARCHAR},
+      twitter = #{twitter,jdbcType=VARCHAR},
+      customer_status = #{customerStatus,jdbcType=VARCHAR},
+      customer_source = #{customerSource,jdbcType=VARCHAR},
+      other_remarks = #{otherRemarks,jdbcType=VARCHAR},
+      assigned_to = #{assignedTo,jdbcType=VARCHAR},
+      last_contact_time = #{lastContactTime,jdbcType=TIMESTAMP},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      linkedin = #{linkedin,jdbcType=VARCHAR},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      company_size = #{companySize,jdbcType=VARCHAR},
+      product_range = #{productRange,jdbcType=VARCHAR},
+      business_scope = #{businessScope,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from customer_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from customer_info
+  </select>
+
+   <select id="selectByEntity" parameterType="com.admarv.saas.model.CustomerInfo" resultMap="BaseResultMap">
+    select * from customer_info where 1=1
+     <if test="name != null">
+	       and name = #{name,jdbcType=VARCHAR}
+	 </if>
+	 <if test="email != null">
+	       and email = #{email,jdbcType=VARCHAR}
+	 </if>
+	 <if test="cntct != null">
+	       and cntct = #{cntct,jdbcType=VARCHAR}
+	 </if>
+	 <if test="ownerId != null">
+	       and owner_id = #{ownerId,jdbcType=VARCHAR}
+	 </if>
+	 <if test="ownerName != null">
+	       and owner_name = #{ownerName,jdbcType=VARCHAR}
+	 </if>
+   </select>
+
+   <select id="selectOneByEntity" parameterType="com.admarv.saas.model.CustomerInfo" resultMap="BaseResultMap">
+	 select * from customer_info where 1=1
+	<if test="name != null">and name = #{name,jdbcType=VARCHAR}</if>
+    <if test="email != null">and email = #{email,jdbcType=VARCHAR}</if>
+    <if test="cntct != null">and cntct = #{cntct,jdbcType=VARCHAR}</if>
+    <if test="ownerId != null">and owner_id = #{ownerId,jdbcType=VARCHAR}</if>
+    <if test="ownerName != null">and owner_name = #{ownerName,jdbcType=VARCHAR}</if>
+    <if test="position != null">and position = #{position,jdbcType=VARCHAR}</if>
+    <if test="fixedPhone != null">and fixed_phone = #{fixedPhone,jdbcType=VARCHAR}</if>
+    <if test="whatsapp != null">and whatsapp = #{whatsapp,jdbcType=VARCHAR}</if>
+    <if test="facebook != null">and facebook = #{facebook,jdbcType=VARCHAR}</if>
+    <if test="customerQuality != null">and customer_quality = #{customerQuality,jdbcType=VARCHAR}</if>
+    <if test="country != null">and country = #{country,jdbcType=VARCHAR}</if>
+    <if test="gender != null">and gender = #{gender,jdbcType=VARCHAR}</if>
+    <if test="birthday != null">and birthday = #{birthday,jdbcType=DATE}</if>
+    <if test="phoneNumber != null">and phone_number = #{phoneNumber,jdbcType=VARCHAR}</if>
+    <if test="skype != null">and skype = #{skype,jdbcType=VARCHAR}</if>
+    <if test="twitter != null">and twitter = #{twitter,jdbcType=VARCHAR}</if>
+    <if test="customerStatus != null">and customer_status = #{customerStatus,jdbcType=VARCHAR}</if>
+    <if test="customerSource != null">and customer_source = #{customerSource,jdbcType=VARCHAR}</if>
+    <if test="otherRemarks != null">and other_remarks = #{otherRemarks,jdbcType=VARCHAR}</if>
+    <if test="assignedTo != null">and assigned_to = #{assignedTo,jdbcType=VARCHAR}</if>
+    <if test="lastContactTime != null">and last_contact_time = #{lastContactTime,jdbcType=TIMESTAMP}</if>
+    <if test="companyName != null">and company_name = #{companyName,jdbcType=VARCHAR}</if>
+    <if test="industry != null">and industry = #{industry,jdbcType=VARCHAR}</if>
+    <if test="linkedin != null">and linkedin = #{linkedin,jdbcType=VARCHAR}</if>
+    <if test="companyEmail != null">and company_email = #{companyEmail,jdbcType=VARCHAR}</if>
+    <if test="website != null">and website = #{website,jdbcType=VARCHAR}</if>
+    <if test="address != null">and address = #{address,jdbcType=VARCHAR}</if>
+    <if test="companySize != null">and company_size = #{companySize,jdbcType=VARCHAR}</if>
+    <if test="productRange != null">and product_range = #{productRange,jdbcType=VARCHAR}</if>
+    <if test="businessScope != null">and business_scope = #{businessScope,jdbcType=VARCHAR}</if>
+    <if test="delFlag != null">and del_flag = #{delFlag,jdbcType=BIT}</if>
+    <if test="createBy != null">and create_by = #{createBy,jdbcType=VARCHAR}</if>
+    <if test="createTime != null">and create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+    <if test="updateBy != null">and update_by = #{updateBy,jdbcType=VARCHAR}</if>
+    <if test="updateTime != null">and update_time = #{updateTime,jdbcType=TIMESTAMP}</if>
+   </select>
+   
+<update id="updateByEntity" parameterType="com.admarv.saas.model.CustomerInfo">
+  UPDATE customer_info
+  <set>
+    <if test="name != null">name = #{name,jdbcType=VARCHAR},</if>
+    <if test="email != null">email = #{email,jdbcType=VARCHAR},</if>
+    <if test="cntct != null">cntct = #{cntct,jdbcType=VARCHAR},</if>
+    <if test="ownerId != null">owner_id = #{ownerId,jdbcType=VARCHAR},</if>
+    <if test="ownerName != null">owner_name = #{ownerName,jdbcType=VARCHAR},</if>
+    <if test="position != null">position = #{position,jdbcType=VARCHAR},</if>
+    <if test="fixedPhone != null">fixed_phone = #{fixedPhone,jdbcType=VARCHAR},</if>
+    <if test="whatsapp != null">whatsapp = #{whatsapp,jdbcType=VARCHAR},</if>
+    <if test="facebook != null">facebook = #{facebook,jdbcType=VARCHAR},</if>
+    <if test="customerQuality != null">customer_quality = #{customerQuality,jdbcType=VARCHAR},</if>
+    <if test="country != null">country = #{country,jdbcType=VARCHAR},</if>
+    <if test="gender != null">gender = #{gender,jdbcType=VARCHAR},</if>
+    <if test="birthday != null">birthday = #{birthday,jdbcType=DATE},</if>
+    <if test="phoneNumber != null">phone_number = #{phoneNumber,jdbcType=VARCHAR},</if>
+    <if test="skype != null">skype = #{skype,jdbcType=VARCHAR},</if>
+    <if test="twitter != null">twitter = #{twitter,jdbcType=VARCHAR},</if>
+    <if test="customerStatus != null">customer_status = #{customerStatus,jdbcType=VARCHAR},</if>
+    <if test="customerSource != null">customer_source = #{customerSource,jdbcType=VARCHAR},</if>
+    <if test="otherRemarks != null">other_remarks = #{otherRemarks,jdbcType=VARCHAR},</if>
+    <if test="assignedTo != null">assigned_to = #{assignedTo,jdbcType=VARCHAR},</if>
+    <if test="lastContactTime != null">last_contact_time = #{lastContactTime,jdbcType=TIMESTAMP},</if>
+    <if test="companyName != null">company_name = #{companyName,jdbcType=VARCHAR},</if>
+    <if test="industry != null">industry = #{industry,jdbcType=VARCHAR},</if>
+    <if test="linkedin != null">linkedin = #{linkedin,jdbcType=VARCHAR},</if>
+    <if test="companyEmail != null">company_email = #{companyEmail,jdbcType=VARCHAR},</if>
+    <if test="website != null">website = #{website,jdbcType=VARCHAR},</if>
+    <if test="address != null">address = #{address,jdbcType=VARCHAR},</if>
+    <if test="companySize != null">company_size = #{companySize,jdbcType=VARCHAR},</if>
+    <if test="productRange != null">product_range = #{productRange,jdbcType=VARCHAR},</if>
+    <if test="businessScope != null">business_scope = #{businessScope,jdbcType=VARCHAR},</if>
+    <if test="delFlag != null">del_flag = #{delFlag,jdbcType=BIT},</if>
+    <if test="createBy != null">create_by = #{createBy,jdbcType=VARCHAR},</if>
+    <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+    <if test="updateBy != null">update_by = #{updateBy,jdbcType=VARCHAR},</if>
+    <if test="updateTime != null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+  </set>
+  WHERE id = #{id,jdbcType=INTEGER}
+</update>
+
+ <select id="getCustomerInfoCount" resultType="java.lang.Integer">
+   select count(*) from customer_info  
+ </select>
+
+</mapper>

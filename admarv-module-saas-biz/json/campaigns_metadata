@@ -1,0 +1,206 @@
+{
+    "id": "23853331913770062",
+    "metadata": {
+        "fields": [
+            {
+                "name": "id",
+                "description": "Campaign's ID",
+                "type": "numeric string"
+            },
+            {
+                "name": "account_id",
+                "description": "ID of the ad account that owns this campaign",
+                "type": "numeric string"
+            },
+            {
+                "name": "adlabels",
+                "description": "Ad Labels associated with this campaign",
+                "type": "list<adlabel>"
+            },
+            {
+                "name": "bid_strategy",
+                "description": "Bid strategy for this campaign when you enable campaign budget optimization and\n        when you use `AUCTION` as your buying type:<br>\n        `LOWEST_COST_WITHOUT_CAP`: Designed to get the most results for your budget based on\n        your ad set `optimization_goal` without limiting your bid amount. This is the best strategy to select\n        if you care most about cost efficiency. However, note that it may be harder to get\n        stable average costs as you spend. Note: this strategy is also known as\n        *automatic bidding*.\n        Learn more in [Ads Help Center, About bid strategies: Lowest cost](https://www.facebook.com/business/help/721453268045071).<br>\n        `LOWEST_COST_WITH_BID_CAP`: Designed to get the most results for your budget based on\n        your ad set `optimization_goal` while limiting actual bid to a specified amount.\n        Get specified bid cap in the `bid_amount` field for each ad set in this ad campaign.\n        This strategy is known as *manual maximum-cost bidding*.\n        Learn more in [Ads Help Center, About bid strategies: Lowest cost](https://www.facebook.com/business/help/721453268045071).<br>\n       `COST_CAP`: Designed to get the most results for your budget based on\n        your ad set `optimization_goal` while limiting actual average cost per optimization event to a specified amount.\n        Get specified cost cap in the `bid_amount` field for each ad set in this ad campaign.\n        Learn more in [Ads Help Center, About bid strategies: Cost Cap](https://www.facebook.com/business/help/272336376749096?id=2196356200683573).<br>Notes: \n\n- If you do not enable campaign budget optimization, you should get `bid_strategy` at the ad set level.\n- `TARGET_COST` bidding strategy has been deprecated with [Marketing API v9](/docs/graph-api/changelog/version9.0).",
+                "type": "enum {lowest_cost_without_cap, lowest_cost_with_bid_cap, cost_cap}"
+            },
+            {
+                "name": "boosted_object_id",
+                "description": "The Boosted Object this campaign has associated, if any",
+                "type": "numeric string"
+            },
+            {
+                "name": "brand_lift_studies",
+                "description": "Automated Brand Lift V2 studies for this ad set.",
+                "type": "list<adstudy>"
+            },
+            {
+                "name": "budget_rebalance_flag",
+                "description": "Whether to automatically rebalance budgets daily for all the adsets under this campaign. [This has been deprecated on Marketing API V7.0](/docs/graph-api/changelog/version7.0#deprecations).",
+                "type": "bool"
+            },
+            {
+                "name": "budget_remaining",
+                "description": "Remaining budget",
+                "type": "numeric string"
+            },
+            {
+                "name": "buying_type",
+                "description": "Buying type, possible values are: <br>`AUCTION`: default<br>`RESERVED`: for [reach and frequency ads](/docs/marketing-api/reachandfrequency)<gk project=\"devsite_docs_internal\">.</gk><br>[Reach and Frequency](/docs/marketing-api/reachandfrequency) is disabled for [housing, employment and credit ads](/docs/marketing-api/special-ad-category).",
+                "type": "string"
+            },
+            {
+                "name": "can_create_brand_lift_study",
+                "description": "If we can create a new automated brand lift study for the ad set.",
+                "type": "bool"
+            },
+            {
+                "name": "can_use_spend_cap",
+                "description": "Whether the campaign can set the spend cap",
+                "type": "bool"
+            },
+            {
+                "name": "configured_status",
+                "description": "If this status is `PAUSED`, all its active ad sets and ads will\n        be paused and have an effective status `CAMPAIGN_PAUSED`. Prefer\n        using 'status' instead of this.",
+                "type": "enum {active, paused, deleted, archived}"
+            },
+            {
+                "name": "created_time",
+                "description": "Created Time",
+                "type": "datetime"
+            },
+            {
+                "name": "daily_budget",
+                "description": "The daily budget of the campaign",
+                "type": "numeric string"
+            },
+            {
+                "name": "effective_status",
+                "description": "IN_PROCESS is available for version 4.0 or higher",
+                "type": "enum {active, paused, deleted, archived, in_process, with_issues}"
+            },
+            {
+                "name": "has_secondary_skadnetwork_reporting",
+                "description": "has_secondary_skadnetwork_reporting",
+                "type": "bool"
+            },
+            {
+                "name": "is_skadnetwork_attribution",
+                "description": "When set to `true` Indicates that the campaign will include SKAdNetwork, iOS 14+. ",
+                "type": "bool"
+            },
+            {
+                "name": "issues_info",
+                "description": "Issues for this campaign that prevented it from deliverying",
+                "type": "list<adcampaignissuesinfo>"
+            },
+            {
+                "name": "last_budget_toggling_time",
+                "description": "Last budget toggling time",
+                "type": "datetime"
+            },
+            {
+                "name": "lifetime_budget",
+                "description": "The lifetime budget of the campaign",
+                "type": "numeric string"
+            },
+            {
+                "name": "name",
+                "description": "Campaign's name",
+                "type": "string"
+            },
+            {
+                "name": "objective",
+                "description": "Campaign's objective\n\nSee the [Outcome Ad-Driven Experience Objective Validation](#odax) section below for more information.",
+                "type": "string"
+            },
+            {
+                "name": "pacing_type",
+                "description": "Defines pacing type of the campaign. The value is an array of options:  \"standard\".",
+                "type": "list<string>"
+            },
+            {
+                "name": "primary_attribution",
+                "description": "primary_attribution",
+                "type": "enum"
+            },
+            {
+                "name": "promoted_object",
+                "description": "The object this campaign is promoting across all its ads",
+                "type": "adpromotedobject"
+            },
+            {
+                "name": "recommendations",
+                "description": "If there are recommendations for this campaign, this field includes them. Otherwise, will not be included in the response. (This field is not included in redownload mode.)",
+                "type": "list<adrecommendation>"
+            },
+            {
+                "name": "smart_promotion_type",
+                "description": "Smart Promotion Type. guided_creation or smart_app_promotion(the choice under APP_INSTALLS objective).",
+                "type": "enum"
+            },
+            {
+                "name": "source_campaign",
+                "description": "The source campaign that this campaign is copied from",
+                "type": "campaign"
+            },
+            {
+                "name": "source_campaign_id",
+                "description": "The source campaign id that this campaign is copied from",
+                "type": "numeric string"
+            },
+            {
+                "name": "special_ad_categories",
+                "description": "special ad categories",
+                "type": "list<enum>"
+            },
+            {
+                "name": "special_ad_category",
+                "description": "The campaign's Special Ad Category. One of `HOUSING`, `EMPLOYMENT`, `CREDIT`, or `NONE`.",
+                "type": "enum"
+            },
+            {
+                "name": "special_ad_category_country",
+                "description": "Country field for  Special Ad Category. ",
+                "type": "list<enum>"
+            },
+            {
+                "name": "spend_cap",
+                "description": "A spend cap for the campaign, such that it will not spend more than this cap. Expressed as integer value of the subunit in your currency.",
+                "type": "numeric string"
+            },
+            {
+                "name": "start_time",
+                "description": "Merging of `start_time`s for the ad sets belonging to this campaign. At the campaign level, `start_time` is a read only field. You can setup `start_time` at the ad set level.",
+                "type": "datetime"
+            },
+            {
+                "name": "status",
+                "description": "If this status is `PAUSED`, all its active ad sets and ads will\n        be paused and have an effective status `CAMPAIGN_PAUSED`. The field\n        returns the same value as 'configured_status', and is the suggested\n        one to use.",
+                "type": "enum {active, paused, deleted, archived}"
+            },
+            {
+                "name": "stop_time",
+                "description": "Merging of `stop_time`s for the ad sets belonging to this campaign, if available. At the campaign level, `stop_time` is a read only field. You can setup `stop_time` at the ad set level.",
+                "type": "datetime"
+            },
+            {
+                "name": "topline_id",
+                "description": "Topline ID",
+                "type": "numeric string"
+            },
+            {
+                "name": "updated_time",
+                "description": "Updated Time. If you update `spend_cap` or daily budget or lifetime budget, this will not automatically update this field.",
+                "type": "datetime"
+            }
+        ],
+        "type": "campaign",
+        "connections": {
+            "ad_studies": "https://graph.facebook.com/v17.0/23853331913770062/ad_studies?access_token=EAAEIQEPl6a0BAJAHpv1urg1jQs4ncS2yv9OIgfzdvlNDF7oLdhGzeElkgl26dbEyocL5uqZBPcE8M3kRGsDLhrjEWpKvNIiwvoYNxsuoxY717sYyJEkgMGRMfZAZA0wOJL2aHpFAvjdQ7FXQP3gxlpGsEYRuuB4I3qgcUE5vYr4HvwpBKZCYUth9gK01LO0QMTTIQ7ZAew4yvkFoLJPTEzJRXD8zwufH0Fi9PlYrPrgZBDK0NW6729",
+            "adrules_governed": "https://graph.facebook.com/v17.0/23853331913770062/adrules_governed?access_token=EAAEIQEPl6a0BAJAHpv1urg1jQs4ncS2yv9OIgfzdvlNDF7oLdhGzeElkgl26dbEyocL5uqZBPcE8M3kRGsDLhrjEWpKvNIiwvoYNxsuoxY717sYyJEkgMGRMfZAZA0wOJL2aHpFAvjdQ7FXQP3gxlpGsEYRuuB4I3qgcUE5vYr4HvwpBKZCYUth9gK01LO0QMTTIQ7ZAew4yvkFoLJPTEzJRXD8zwufH0Fi9PlYrPrgZBDK0NW6729",
+            "ads": "https://graph.facebook.com/v17.0/23853331913770062/ads?access_token=EAAEIQEPl6a0BAJAHpv1urg1jQs4ncS2yv9OIgfzdvlNDF7oLdhGzeElkgl26dbEyocL5uqZBPcE8M3kRGsDLhrjEWpKvNIiwvoYNxsuoxY717sYyJEkgMGRMfZAZA0wOJL2aHpFAvjdQ7FXQP3gxlpGsEYRuuB4I3qgcUE5vYr4HvwpBKZCYUth9gK01LO0QMTTIQ7ZAew4yvkFoLJPTEzJRXD8zwufH0Fi9PlYrPrgZBDK0NW6729",
+            "adsets": "https://graph.facebook.com/v17.0/23853331913770062/adsets?access_token=EAAEIQEPl6a0BAJAHpv1urg1jQs4ncS2yv9OIgfzdvlNDF7oLdhGzeElkgl26dbEyocL5uqZBPcE8M3kRGsDLhrjEWpKvNIiwvoYNxsuoxY717sYyJEkgMGRMfZAZA0wOJL2aHpFAvjdQ7FXQP3gxlpGsEYRuuB4I3qgcUE5vYr4HvwpBKZCYUth9gK01LO0QMTTIQ7ZAew4yvkFoLJPTEzJRXD8zwufH0Fi9PlYrPrgZBDK0NW6729",
+            "copies": "https://graph.facebook.com/v17.0/23853331913770062/copies?access_token=EAAEIQEPl6a0BAJAHpv1urg1jQs4ncS2yv9OIgfzdvlNDF7oLdhGzeElkgl26dbEyocL5uqZBPcE8M3kRGsDLhrjEWpKvNIiwvoYNxsuoxY717sYyJEkgMGRMfZAZA0wOJL2aHpFAvjdQ7FXQP3gxlpGsEYRuuB4I3qgcUE5vYr4HvwpBKZCYUth9gK01LO0QMTTIQ7ZAew4yvkFoLJPTEzJRXD8zwufH0Fi9PlYrPrgZBDK0NW6729",
+            "insights": "https://graph.facebook.com/v17.0/23853331913770062/insights?access_token=EAAEIQEPl6a0BAJAHpv1urg1jQs4ncS2yv9OIgfzdvlNDF7oLdhGzeElkgl26dbEyocL5uqZBPcE8M3kRGsDLhrjEWpKvNIiwvoYNxsuoxY717sYyJEkgMGRMfZAZA0wOJL2aHpFAvjdQ7FXQP3gxlpGsEYRuuB4I3qgcUE5vYr4HvwpBKZCYUth9gK01LO0QMTTIQ7ZAew4yvkFoLJPTEzJRXD8zwufH0Fi9PlYrPrgZBDK0NW6729"
+        }
+    }
+}

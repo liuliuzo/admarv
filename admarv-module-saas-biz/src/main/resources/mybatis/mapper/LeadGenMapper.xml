@@ -8,18 +8,28 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="cntct" jdbcType="VARCHAR" property="cntct" />
     <result column="crte_tm" jdbcType="VARCHAR" property="crteTm" />
+    <result column="crte_dt" jdbcType="VARCHAR" property="crteDt" />
     <result column="lead_stat" jdbcType="VARCHAR" property="leadStat" />
     <result column="regn" jdbcType="VARCHAR" property="regn" />
     <result column="flwp_stat" jdbcType="VARCHAR" property="flwpStat" />
     <result column="rsrc" jdbcType="VARCHAR" property="rsrc" />
     <result column="form_id" jdbcType="VARCHAR" property="formId" />
-    <result column="owner" jdbcType="VARCHAR" property="owner" />
+    <result column="page_id" jdbcType="VARCHAR" property="pageId" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="lead_auality" jdbcType="VARCHAR" property="leadAuality" />
+    <result column="campaign_id" jdbcType="VARCHAR" property="campaignId" />
+    <result column="ad_id" jdbcType="VARCHAR" property="adId" />
+    <result column="adset_id" jdbcType="VARCHAR" property="adsetId" />
+    <result column="customer" jdbcType="LONGVARCHAR" property="customer" />
     <result column="del_flag" jdbcType="BIT" property="delFlag" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="other_fields" jdbcType="LONGVARCHAR" property="otherFields" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from lead_gen
@@ -28,18 +38,24 @@
   <insert id="insert" parameterType="com.admarv.saas.model.LeadGen">
     insert into lead_gen (id, lead_id, name, 
       email, cntct, crte_tm, 
-      lead_stat, regn, flwp_stat, 
-      rsrc, form_id, owner, 
-      user_name, del_flag, create_by, 
-      create_time, update_by, update_time
-      )
+      crte_dt, lead_stat, regn, 
+      flwp_stat, rsrc, form_id, 
+      page_id, owner_id, owner_name, 
+      user_id, user_name, lead_auality, 
+      campaign_id, ad_id, adset_id, 
+      del_flag, create_by, create_time, 
+      update_by, update_time, customer, 
+      other_fields)
     values (#{id,jdbcType=INTEGER}, #{leadId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{cntct,jdbcType=VARCHAR}, #{crteTm,jdbcType=VARCHAR}, 
-      #{leadStat,jdbcType=VARCHAR}, #{regn,jdbcType=VARCHAR}, #{flwpStat,jdbcType=VARCHAR}, 
-      #{rsrc,jdbcType=VARCHAR}, #{formId,jdbcType=VARCHAR}, #{owner,jdbcType=VARCHAR}, 
-      #{userName,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+      #{crteDt,jdbcType=VARCHAR}, #{leadStat,jdbcType=VARCHAR}, #{regn,jdbcType=VARCHAR}, 
+      #{flwpStat,jdbcType=VARCHAR}, #{rsrc,jdbcType=VARCHAR}, #{formId,jdbcType=VARCHAR}, 
+      #{pageId,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{leadAuality,jdbcType=VARCHAR}, 
+      #{campaignId,jdbcType=VARCHAR}, #{adId,jdbcType=VARCHAR}, #{adsetId,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=BIT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{customer,jdbcType=LONGVARCHAR}, 
+      #{otherFields,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.LeadGen">
     update lead_gen
@@ -48,34 +64,47 @@
       email = #{email,jdbcType=VARCHAR},
       cntct = #{cntct,jdbcType=VARCHAR},
       crte_tm = #{crteTm,jdbcType=VARCHAR},
+      crte_dt = #{crteDt,jdbcType=VARCHAR},
       lead_stat = #{leadStat,jdbcType=VARCHAR},
       regn = #{regn,jdbcType=VARCHAR},
       flwp_stat = #{flwpStat,jdbcType=VARCHAR},
       rsrc = #{rsrc,jdbcType=VARCHAR},
       form_id = #{formId,jdbcType=VARCHAR},
-      owner = #{owner,jdbcType=VARCHAR},
+      page_id = #{pageId,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
+      owner_name = #{ownerName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
+      lead_auality = #{leadAuality,jdbcType=VARCHAR},
+      campaign_id = #{campaignId,jdbcType=VARCHAR},
+      ad_id = #{adId,jdbcType=VARCHAR},
+      adset_id = #{adsetId,jdbcType=VARCHAR},
       del_flag = #{delFlag,jdbcType=BIT},
       create_by = #{createBy,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      customer = #{customer,jdbcType=LONGVARCHAR},
+      other_fields = #{otherFields,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, lead_id, name, email, cntct, crte_tm, lead_stat, regn, flwp_stat, rsrc, 
-    form_id, owner, user_name, del_flag, create_by, create_time, update_by, update_time
+    select id, lead_id, name, email, cntct, crte_tm, crte_dt, lead_stat, regn, flwp_stat, 
+    rsrc, form_id, page_id, owner_id, owner_name, user_id, user_name, lead_auality, campaign_id, 
+    ad_id, adset_id, del_flag, create_by, create_time, update_by, update_time, customer, 
+    other_fields
     from lead_gen
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, lead_id, name, email, cntct, crte_tm, lead_stat, regn, flwp_stat, rsrc, 
-    form_id, owner, user_name, del_flag, create_by, create_time, update_by, update_time
+    select id, lead_id, name, email, cntct, crte_tm, crte_dt, lead_stat, regn, flwp_stat, 
+    rsrc, form_id, page_id, owner_id, owner_name, user_id, user_name, lead_auality, campaign_id, 
+    ad_id, adset_id, del_flag, create_by, create_time, update_by, update_time, customer, 
+    other_fields
     from lead_gen
   </select>
- 
   <select id="selectByEntity" parameterType="com.admarv.saas.model.LeadGen" resultMap="BaseResultMap">
-       select * from lead_gen where 1=1
+      select * from lead_gen where 1=1
       <if test="id != null">
        and id = #{id,jdbcType=INTEGER}
       </if>
@@ -85,54 +114,90 @@
       <if test="name != null">
        and name = #{name,jdbcType=VARCHAR}
       </if>
-        <if test="email != null">
+      <if test="email != null">
        and email = #{email,jdbcType=VARCHAR}
       </if>
-        <if test="cntct != null">
+      <if test="cntct != null">
        and cntct = #{cntct,jdbcType=VARCHAR}
       </if>
-        <if test="crteTm != null">
+      <if test="crteTm != null">
        and crte_tm = #{crteTm,jdbcType=VARCHAR}
       </if>
-        <if test="leadStat != null">
+      <if test="crteDt != null">
+       and crte_dt = #{crteDt,jdbcType=VARCHAR}
+      </if>
+      <if test="leadStat != null">
        and lead_stat = #{leadStat,jdbcType=VARCHAR}
       </if>
-        <if test="regn != null">
+      <if test="regn != null">
        and regn = #{regn,jdbcType=VARCHAR}
       </if>
-        <if test="flwpStat != null">
+      <if test="flwpStat != null">
        and flwp_stat = #{flwpStat,jdbcType=VARCHAR}
       </if>
-        <if test="rsrc != null">
+      <if test="rsrc != null">
        and rsrc = #{rsrc,jdbcType=VARCHAR}
       </if>
       <if test="formId != null">
        and form_id = #{formId,jdbcType=VARCHAR}
       </if>
-      <if test="owner != null">
-       and owner = #{owner,jdbcType=VARCHAR}
+      <if test="pageId != null">
+       and page_id = #{pageId,jdbcType=VARCHAR}
+      </if>
+      <if test="ownerId != null">
+       and owner_id = #{ownerId,jdbcType=VARCHAR}
+      </if>
+      <if test="ownerName != null">
+       and owner_name = #{ownerName,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+       and userId = #{userId,jdbcType=VARCHAR}
       </if>
       <if test="userName != null">
        and user_name = #{userName,jdbcType=VARCHAR}
       </if>
+      <if test="leadAuality != null">
+       and lead_auality = #{leadAuality,jdbcType=VARCHAR}
+      </if>
+      <if test="campaignId != null">
+       and campaign_id = #{campaignId,jdbcType=VARCHAR}
+      </if>
+      <if test="adId != null">
+       and ad_id = #{adId,jdbcType=VARCHAR}
+      </if>
+      <if test="adsetId != null">
+       and adset_id = #{adsetId,jdbcType=VARCHAR}
+      </if>
+      <if test="customer != null">
+       and customer = #{customer,jdbcType=VARCHAR}
+      </if>
       <if test="delFlag != null">
        and del_flag = #{delFlag,jdbcType=VARCHAR}
       </if>
-        <if test="createBy != null">
+      <if test="createBy != null">
        and create_by = #{createBy,jdbcType=VARCHAR}
       </if>
-        <if test="createTime != null">
+       <if test="createTime != null">
        and create_time = #{createTime,jdbcType=TIMESTAMP}
       </if>
-        <if test="updateBy != null">
+      <if test="updateBy != null">
        and update_by = #{updateBy,jdbcType=VARCHAR}
       </if>
-        <if test="updateTime != null">
+      <if test="updateTime != null">
        and update_time = #{updateTime,jdbcType=TIMESTAMP}
       </if>
+      <if test="updateTime != null">
+       and update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="startDate != null and endDate != null ">
+       and crte_dt BETWEEN #{startDate} AND #{endDate}
+      </if>
+      <if test="otherFields != null">
+       and other_fields = #{otherFields,jdbcType=VARCHAR}
+      </if>
  </select>
-  
-  <select id="selectByOneEntity" parameterType="com.admarv.saas.model.LeadGen" resultMap="BaseResultMap">
+
+  <select id="selectOneByEntity" parameterType="com.admarv.saas.model.LeadGen" resultMap="BaseResultMap">
      select * from lead_gen where 1=1
       <if test="id != null">
        and id = #{id,jdbcType=INTEGER}
@@ -143,51 +208,180 @@
       <if test="name != null">
        and name = #{name,jdbcType=VARCHAR}
       </if>
-        <if test="email != null">
+      <if test="email != null">
        and email = #{email,jdbcType=VARCHAR}
       </if>
-        <if test="cntct != null">
+      <if test="cntct != null">
        and cntct = #{cntct,jdbcType=VARCHAR}
       </if>
-        <if test="crteTm != null">
+      <if test="crteTm != null">
        and crte_tm = #{crteTm,jdbcType=VARCHAR}
       </if>
-        <if test="leadStat != null">
+      <if test="crteDt != null">
+       and crte_dt = #{crteDt,jdbcType=VARCHAR}
+      </if>
+      <if test="leadStat != null">
        and lead_stat = #{leadStat,jdbcType=VARCHAR}
       </if>
-        <if test="regn != null">
+      <if test="regn != null">
        and regn = #{regn,jdbcType=VARCHAR}
       </if>
-        <if test="flwpStat != null">
+      <if test="flwpStat != null">
        and flwp_stat = #{flwpStat,jdbcType=VARCHAR}
       </if>
-        <if test="rsrc != null">
+      <if test="rsrc != null">
        and rsrc = #{rsrc,jdbcType=VARCHAR}
       </if>
       <if test="formId != null">
        and form_id = #{formId,jdbcType=VARCHAR}
       </if>
-      <if test="owner != null">
-       and owner = #{owner,jdbcType=VARCHAR}
+      <if test="pageId != null">
+       and page_id = #{pageId,jdbcType=VARCHAR}
+      </if>
+      <if test="ownerId != null">
+       and owner_id = #{ownerId,jdbcType=VARCHAR}
+      </if>
+      <if test="ownerName != null">
+       and owner_name = #{ownerName,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+       and userId = #{userId,jdbcType=VARCHAR}
       </if>
       <if test="userName != null">
        and user_name = #{userName,jdbcType=VARCHAR}
       </if>
+      <if test="leadAuality != null">
+       and lead_auality = #{leadAuality,jdbcType=VARCHAR}
+      </if>
+      <if test="campaignId != null">
+       and campaign_id = #{campaignId,jdbcType=VARCHAR}
+      </if>
+      <if test="adId != null">
+       and ad_id = #{adId,jdbcType=VARCHAR}
+      </if>
+      <if test="adsetId != null">
+       and adset_id = #{adsetId,jdbcType=VARCHAR}
+      </if>
+      <if test="customer != null">
+       and customer = #{customer,jdbcType=VARCHAR}
+      </if> 
       <if test="delFlag != null">
        and del_flag = #{delFlag,jdbcType=VARCHAR}
       </if>
-        <if test="createBy != null">
+      <if test="createBy != null">
        and create_by = #{createBy,jdbcType=VARCHAR}
       </if>
-        <if test="createTime != null">
+      <if test="createTime != null">
        and create_time = #{createTime,jdbcType=TIMESTAMP}
       </if>
-        <if test="updateBy != null">
+       <if test="updateBy != null">
        and update_by = #{updateBy,jdbcType=VARCHAR}
       </if>
       <if test="updateTime != null">
        and update_time = #{updateTime,jdbcType=TIMESTAMP}
       </if>
+      <if test="startDate != null and endDate != null ">
+       and crte_dt BETWEEN #{startDate} AND #{endDate}
+      </if>
+      <if test="otherFields != null">
+       and other_fields = #{otherFields,jdbcType=VARCHAR}
+      </if>
+  </select>
+   
+  <select id="countByDate" resultType="java.lang.Integer">
+    select count(*) FROM lead_gen WHERE crte_dt = #{date} AND user_id = #{userId} AND page_id = #{pageId}
+  </select>
+    
+  <select id="countBetweenByPageId" resultType="java.lang.Integer">
+    select count(*) FROM lead_gen WHERE crte_dt BETWEEN #{startDate} AND #{endDate} AND user_id = #{userId} AND page_id = #{pageId}
+  </select>
+  
+  <select id="countAllByUser" resultType="java.lang.Integer">
+    select count(*) FROM lead_gen WHERE user_id = #{userId}
+  </select>
+  
+  <select id="countAllByUserAndFlwpStat" resultType="java.lang.Integer">
+    select count(*) FROM lead_gen WHERE user_id = #{userId} and flwp_stat = #{flwpStat}
+  </select>
+  
+   <select id="selectDispLeads" parameterType="com.admarv.saas.model.LeadGen" resultMap="BaseResultMap">
+    select * from lead_gen where 1=1
+     <if test="userName != null">
+       and userName = #{userName,jdbcType=VARCHAR}
+     </if>
+     <if test="userId != null">
+       and user_id = #{userId,jdbcType=VARCHAR}
+     </if>
+     <if test="leadAuality != null">
+       and lead_auality = #{leadAuality,jdbcType=VARCHAR}
+     </if>
+      <if test="flwpStat != null">
+       and flwp_stat = #{flwpStat,jdbcType=VARCHAR}
+     </if>
+      <if test="leadStat != null">
+       and lead_stat = #{leadStat,jdbcType=VARCHAR}
+     </if>
+     <if test="rsrc != null">
+       and rsrc = #{rsrc,jdbcType=VARCHAR}
+     </if>
+     <if test="regn != null">
+       and regn = #{regn,jdbcType=VARCHAR}
+     </if>
+     <if test="startDate != null and endDate != null ">
+       and crte_dt BETWEEN #{startDate} AND #{endDate}
+     </if>
+     <if test="pageId != null">
+       and page_id = #{pageId,jdbcType=VARCHAR}
+     </if>
+     <if test="name != null">
+       and name like #{name,jdbcType=VARCHAR}
+     </if>
+      UNION
+      select * from lead_gen where 1=1
+     <if test="ownerId != null">
+       and owner_id = #{userId,jdbcType=VARCHAR}
+     </if>
+     <if test="ownerName != null">
+       and owner_name = #{ownerName,jdbcType=VARCHAR}
+     </if>
+     <if test="leadAuality != null">
+       and lead_auality = #{leadAuality,jdbcType=VARCHAR}
+     </if>
+      <if test="flwpStat != null">
+       and flwp_stat = #{flwpStat,jdbcType=VARCHAR}
+     </if>
+     <if test="leadStat != null">
+       and lead_stat = #{leadStat,jdbcType=VARCHAR}
+     </if>
+     <if test="rsrc != null">
+       and rsrc = #{rsrc,jdbcType=VARCHAR}
+     </if>
+     <if test="regn != null">
+       and regn = #{regn,jdbcType=VARCHAR}
+     </if>
+     <if test="startDate != null and endDate != null ">
+       and crte_dt BETWEEN #{startDate} AND #{endDate}
+     </if>
+     <if test="pageId != null">
+       and page_id = #{pageId,jdbcType=VARCHAR}
+     </if>
+     <if test="name != null">
+       and name like #{name,jdbcType=VARCHAR}
+     </if>
+      <if test="otherFields != null">
+       and other_fields = #{otherFields,jdbcType=VARCHAR}
+      </if>
+  </select>
+  
+  <select id="countInquiriesByRegn" parameterType="java.lang.Integer" resultType="com.admarv.saas.model.LeadCntry">
+    SELECT regn, COUNT(*) AS count FROM lead_gen GROUP BY regn ORDER BY count DESC LIMIT #{top}
+  </select>
+  
+  <select id="selectByIdList" resultType="com.admarv.saas.model.LeadGen" parameterType="java.util.List" resultMap="BaseResultMap">
+    SELECT * FROM lead_gen WHERE id IN
+    <foreach item="id" collection="idList" open="(" separator="," close=")">
+      #{id}
+    </foreach>
   </select>
   
 </mapper>

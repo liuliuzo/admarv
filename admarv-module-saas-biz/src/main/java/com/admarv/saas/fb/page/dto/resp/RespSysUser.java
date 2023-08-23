@@ -8,6 +8,7 @@ package com.admarv.saas.fb.page.dto.resp;
 public class RespSysUser {
 
     private String userName;
+    private String userId;
 
     public String getUserName() {
         return userName;
@@ -17,9 +18,17 @@ public class RespSysUser {
         this.userName = userName;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
-        return "RespSysUser [userName=" + userName + "]";
+        return "RespSysUser [userName=" + userName + ", userId=" + userId + "]";
     }
 
 }

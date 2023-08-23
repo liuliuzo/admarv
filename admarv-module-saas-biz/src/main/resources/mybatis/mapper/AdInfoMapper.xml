@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.AdInfoMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.AdInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ad_id" jdbcType="VARCHAR" property="adId" />
+    <result column="daily_budget" jdbcType="VARCHAR" property="dailyBudget" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="campaign_id" jdbcType="VARCHAR" property="campaignId" />
+    <result column="adset_id" jdbcType="VARCHAR" property="adsetId" />
+    <result column="ad_account_id" jdbcType="VARCHAR" property="adAccountId" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ad_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.AdInfo">
+    insert into ad_info (id, ad_id, daily_budget, 
+      name, status, campaign_id, 
+      adset_id, ad_account_id, del_flag, 
+      create_by, create_time, update_by, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{adId,jdbcType=VARCHAR}, #{dailyBudget,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{campaignId,jdbcType=VARCHAR}, 
+      #{adsetId,jdbcType=VARCHAR}, #{adAccountId,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.AdInfo">
+    update ad_info
+    set ad_id = #{adId,jdbcType=VARCHAR},
+      daily_budget = #{dailyBudget,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      campaign_id = #{campaignId,jdbcType=VARCHAR},
+      adset_id = #{adsetId,jdbcType=VARCHAR},
+      ad_account_id = #{adAccountId,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, ad_id, daily_budget, name, status, campaign_id, adset_id, ad_account_id, 
+    del_flag, create_by, create_time, update_by, update_time
+    from ad_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, ad_id, daily_budget, name, status, campaign_id, adset_id, ad_account_id, 
+    del_flag, create_by, create_time, update_by, update_time
+    from ad_info
+  </select>
+  
+  <select id="selectByEntity" parameterType="com.admarv.saas.model.AdInfo" resultMap="BaseResultMap">
+      select * from ad_info where 1=1
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="dailyBudget != null">
+       and daily_budget = #{dailyBudget,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+       and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+       and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="campaignId != null">
+       and campaign_id = #{campaignId,jdbcType=VARCHAR}
+      </if>
+      <if test="adsetId != null">
+       and adset_id = #{adsetId,jdbcType=VARCHAR}
+      </if>
+      <if test="adId != null">
+       and ad_id = #{adId,jdbcType=VARCHAR}
+      </if>
+      <if test="adAccountId != null">
+       and ad_account_id = #{adAccountId,jdbcType=VARCHAR}
+      </if>
+ </select>
+ 
+ <select id="selectOneByEntity" parameterType="com.admarv.saas.model.AdInfo" resultMap="BaseResultMap">
+     select * from ad_info where 1=1
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="dailyBudget != null">
+       and daily_budget = #{dailyBudget,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+       and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+       and status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="campaignId != null">
+       and campaign_id = #{campaignId,jdbcType=VARCHAR}
+      </if>
+      <if test="adsetId != null">
+       and adset_id = #{adsetId,jdbcType=VARCHAR}
+      </if>
+      <if test="adId != null">
+       and ad_id = #{adId,jdbcType=VARCHAR}
+      </if>
+      <if test="adAccountId != null">
+       and ad_account_id = #{adAccountId,jdbcType=VARCHAR}
+      </if>
+  </select>
+</mapper>

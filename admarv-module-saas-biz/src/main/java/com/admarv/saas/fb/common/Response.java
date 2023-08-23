@@ -8,46 +8,49 @@ package com.admarv.saas.fb.common;
  */
 public class Response {
 
-    private String code;
-    private String message;
-    private boolean success;
-    private Object result;
+	private String code;
 
-    public String getCode() {
-        return code;
-    }
+	private String message;
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	private boolean success;
 
-    public String getMessage() {
-        return message;
-    }
+	private Object result;
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public boolean isSuccess() {
-        return success;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
+	public String getMessage() {
+		return message;
+	}
 
-    public Object getResult() {
-        return result;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-    public void setResult(Object result) {
-        this.result = result;
-    }
+	public boolean isSuccess() {
+		return success;
+	}
 
-    @Override
-    public String toString() {
-        return "Response [code=" + code + ", message=" + message + ", success=" + success + ", result=" + result + "]";
-    }
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public Object getResult() {
+		return result;
+	}
+
+	public void setResult(Object result) {
+		this.result = result;
+	}
+
+	@Override
+	public String toString() {
+		return "Response [code=" + code + ", message=" + message + ", success=" + success + ", result=" + result + "]";
+	}
 
 }
