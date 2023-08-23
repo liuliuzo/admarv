@@ -111,12 +111,15 @@ public class WhatAppWebSocketHandler extends TextWebSocketHandler {
 			String body = message.getText().getBody();
 			TextMessage textMessage = new TextMessage(body);
 			session.sendMessage(textMessage);
+			
 			WhatsappMsg insert = new WhatsappMsg();
 			insert.setWhatsappFrom(from);
 			insert.setWhatsappTo(displayPhoneNumber);
 			insert.setMsg(body);
 			int row = whatsappMsgMapper.insert(insert);
 			log.info("success insert WhatsappMsg row:{}", row);
+			
+			//更新用户最后联系时间
 			CustomerInfo selectEntity = new CustomerInfo();
 			selectEntity.setWhatsapp(fromNum);
 			CustomerInfo customerInfoUpdate = customerInfoMapper.selectOneByEntity(selectEntity);

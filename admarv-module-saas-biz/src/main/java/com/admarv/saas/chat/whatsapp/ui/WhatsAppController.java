@@ -127,6 +127,7 @@ public class WhatsAppController {
 										whatAppWebSocketHandler.sendFailMessageBack(metadata, statuses);
 									}
 								} else {
+									
 									JsonArray jsonArrayMessages = jsonValue.get("messages").getAsJsonArray();
 									List<Messages> listMessages = this.parseJsonArrayToMessagesList(jsonArrayMessages);
 									log.info("listMessages :{}", listMessages);
@@ -142,6 +143,8 @@ public class WhatsAppController {
 										//Send to person
 										whatAppWebSocketHandler.sendMessageBack(contacts, metadata, messages);
 									}
+									
+									
 								}
 							}
 						}
