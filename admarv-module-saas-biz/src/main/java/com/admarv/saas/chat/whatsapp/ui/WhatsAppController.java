@@ -26,6 +26,18 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.admarv.saas.chat.whatsapp.config.WhatAppWebSocketHandler;
+import com.admarv.saas.chat.whatsapp.dto.req.ReqSendWhatsAppMsg;
+import com.admarv.saas.chat.whatsapp.dto.req.ReqWhatsAppMsg;
+import com.admarv.saas.chat.whatsapp.model.messages.Contacts;
+import com.admarv.saas.chat.whatsapp.model.messages.ErrorData;
+import com.admarv.saas.chat.whatsapp.model.messages.Errors;
+import com.admarv.saas.chat.whatsapp.model.messages.Messages;
+import com.admarv.saas.chat.whatsapp.model.messages.Metadata;
+import com.admarv.saas.chat.whatsapp.model.messages.Profile;
+import com.admarv.saas.chat.whatsapp.model.messages.Statuses;
+import com.admarv.saas.chat.whatsapp.model.sendmsg.SendMsg;
+import com.admarv.saas.chat.whatsapp.model.sendmsg.Text;
+import com.admarv.saas.chat.whatsapp.model.sendresp.SendResponse;
 import com.admarv.saas.fb.common.Response;
 import com.admarv.saas.fb.common.dto.resp.RespSaasInfo;
 import com.admarv.saas.mapper.CustomerInfoMapper;
@@ -154,7 +166,7 @@ public class WhatsAppController {
 				messages.setTimestamp(jsonObject.get("timestamp").getAsString());
 				messages.setType(jsonObject.get("type").getAsString());
 				JsonObject textObject = jsonObject.getAsJsonObject("text");
-				com.admarv.saas.whatsapp.model.messages.Text text = new com.admarv.saas.whatsapp.model.messages.Text();
+				com.admarv.saas.chat.whatsapp.model.messages.Text text = new com.admarv.saas.chat.whatsapp.model.messages.Text();
 				text.setBody(textObject.get("body").getAsString());
 				messages.setText(text);
 				messagesList.add(messages);

@@ -3,8 +3,9 @@ package com.admarv.saas.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.admarv.saas.chat.whatsapp.model.Contacts;
-import com.admarv.saas.chat.whatsapp.model.Messages;
+import com.admarv.saas.chat.whatsapp.model.messages.Contacts;
+import com.admarv.saas.chat.whatsapp.model.messages.Messages;
+
 
 /**
  * 
