@@ -96,7 +96,7 @@ public class GptController {
 		if (!CollectionUtils.isEmpty(record)) {
 			for (GptMsg gptMsg : record) {
 				log.info("gptMsg:{}", gptMsg);
-				builder.append(" ").append(gptMsg.getMsg())
+				builder.append(" ").append(gptMsg.getMsg());
 			}
 		}
 		
