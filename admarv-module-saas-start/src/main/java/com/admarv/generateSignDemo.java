@@ -55,7 +55,7 @@ public class generateSignDemo {
 
 	    // step1: 拼接header参数
 	    raw.append("accessKey=").append(headers.get("accessKey")).append("&action=").append(headers.get("action"))
-	            .append("&bizType=").append(headers.get("bizType")).append("&ts=").append(headers.get("ts"));
+	    .append("&bizType=").append(headers.get("bizType")).append("&ts=").append(headers.get("ts"));
 	    log.info("step1: {}", raw); // step1: accessKey=fme2na3kdi3ki&action=send&bizType=1&ts=1655710885431
 
 	    // step2: 拼接body参数

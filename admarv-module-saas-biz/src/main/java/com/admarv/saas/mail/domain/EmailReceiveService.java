@@ -79,12 +79,17 @@ public class EmailReceiveService {
 				log.info("-------------------------");
 				String subject = message.getSubject();
 				log.info("Subject :{}", subject);
-				Address[] fromArray = message.getFrom();
-				log.info("From :{}", fromArray.toString());
+				Address[] fromArray = message.getFrom();	
+			    StringBuffer sbFrom = new StringBuffer();
+				for (Address address : fromArray) {
+					sbFrom.append(address.toString());
+				}
+				log.info("From :{}", sbFrom.toString());
 				log.info("Text :{}", message.getContent().toString());
 				Address[] addressArray = message.getAllRecipients();
+				StringBuffer sbAddress = new StringBuffer();
 				for (Address address : addressArray) {
-					log.info("address:{}", address);
+					sbAddress.append(address.toString());
 				}
 				String description = message.getDescription();
 				log.info("description:{}", description);
@@ -97,20 +102,23 @@ public class EmailReceiveService {
 				Date sentDate = message.getSentDate();
 				log.info("sentDate:{}", sentDate);
 				Address[] replayToArray = message.getReplyTo();
+				StringBuffer sbReplayToArray = new StringBuffer();
 				for (Address replayTo : replayToArray) {
 					log.info("replayTo:{}", replayTo);
+					sbAddress.append(sbReplayToArray.toString());
 				}
 				EmailMsg insert = new EmailMsg();
 				insert.setSubject(subject);
-				insert.setFrom(fromArray.toString());
+				insert.setFrom(sbFrom.toString());
 				insert.setText(message.getContent().toString());
-				insert.setAddressArray(addressArray.toString());
+				insert.setAddressArray(sbAddress.toString());
 				insert.setDescription(description);
 				insert.setDisposition(disposition);
 				insert.setFileName(fileName);
 				insert.setReceivedDate(receivedDate);
 				insert.setSentDate(sentDate);
-				insert.setReplayToArray(replayToArray.toString());
+				insert.setReplayToArray(sbReplayToArray.toString());
+				
 //				int row = emailMsgMapper.insert(insert);
 //				log.info("success insert email Msg row:{}", row);
 				RespEmailMsg respEmailMsg=new RespEmailMsg();
