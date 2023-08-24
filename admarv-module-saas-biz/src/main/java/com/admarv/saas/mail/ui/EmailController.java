@@ -199,12 +199,14 @@ public class EmailController {
 		String email = emailInfo.getEmail();
 		String password = emailInfo.getPassword();
 		String authCode = emailInfo.getAuthCode();
+		
 		List<RespEmailMsg> result;
 		if (StringUtils.isNotBlank(authCode)) {
 			result = emailReceiveService.receiveEmail(email, authCode);
 		} else {
 			result = emailReceiveService.receiveEmail(email, password);
 		}
+		
 		Response response = new Response();
 		response.setCode("200");
 		response.setResult(result);
