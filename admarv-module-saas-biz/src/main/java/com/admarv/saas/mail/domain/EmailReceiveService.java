@@ -121,7 +121,8 @@ public class EmailReceiveService {
 				
 //				int row = emailMsgMapper.insert(insert);
 //				log.info("success insert email Msg row:{}", row);
-				RespEmailMsg respEmailMsg=new RespEmailMsg();
+				
+				RespEmailMsg respEmailMsg = new RespEmailMsg();
 				respEmailMsg.setEmail(email);
 				respEmailMsg.setSubject(subject);
 				respEmailMsg.setFrom(fromArray.toString());

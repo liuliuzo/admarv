@@ -9,9 +9,12 @@ import java.util.Arrays;
  */
 public enum POP3Enum {
 
-	P0P3_163_RECEIVE("163", "pop.163.com", 110, 995, new String[] {"163.com"});
+	P0P3_163_RECEIVE("163", "pop.163.com", 110, 995, new String[] { "163.com" }),
+	HOTMAIL_RECEIVE("Hotmail", "pop3.live.com", 110, 995, new String[] { "outlook.com" }),
+	OUTLOOK_RECEIVE("outlook", "pop3.live.com", 110, 995, new String[] { "hotmail.com" }),
+	GMAIL_RECEIVE("gmail", "pop.gmail.com", 110, 995, new String[] { "gmail.com" });
+	
 //	NETEASE_RECEIVE("NetEase", "smtphz.qiye.163.com", 25, 465, new String[] {"admarv.com"}),
-//	HOTMAIL_PUTLOOK_RECEIVE("Hotmail", "smtp.live.com", 25, 465, new String[] {"hotmail.com","outlook.com" }),
 //  QQ_RECEIVE("Tencent QQ", "smtp.qq.com", 587, 465, new String[]{"qq.com"}),
 //  ALIYUN_RECEIVE("Alibaba", "smtp.mxhichina.com", 465, 465, new String[]{"aliyun.com"}),
 //  GMAIL_RECEIVE("Google Gmail", "smtp.gmail.com", 587, 465, new String[]{"gmail.com"}),
@@ -58,8 +61,6 @@ public enum POP3Enum {
 	public String[] getDomainNames() {
 		return domainNames;
 	}
-
-
 
 	public static POP3Enum getByEmailFormat(String email) {
         String domain = email.substring(email.lastIndexOf("@") + 1).toLowerCase();
