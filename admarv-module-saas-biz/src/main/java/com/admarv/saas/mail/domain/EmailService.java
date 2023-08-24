@@ -94,8 +94,12 @@ public class EmailService {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true); // Enable HTML content
 		helper.setFrom(email);
-		helper.setBcc(bcc);
-		helper.setCc(cc);
+		if (StringUtils.isNotBlank(bcc)) {
+			helper.setBcc(bcc);
+		}
+		if (StringUtils.isNotBlank(cc)) {
+			helper.setCc(cc);
+		}
 		
 		//支持多个邮件
 		if (to.contains(";")) {
