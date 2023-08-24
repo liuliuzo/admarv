@@ -393,7 +393,7 @@ CREATE TABLE `gpt_msg` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='gpt聊天消息';
 
 -- ----------------------------
--- Table structure for `Posts`
+-- Table structure for `fb_posts`
 -- ----------------------------
 DROP TABLE IF EXISTS `fb_posts`;
 CREATE TABLE `fb_posts` (
@@ -406,6 +406,30 @@ CREATE TABLE `fb_posts` (
     `post_status` VARCHAR(255) COMMENT '贴文状态',
     `publish_time` DATETIME COMMENT '发布时间',
     `action_taken` VARCHAR(255) COMMENT '操作',
+    `del_flag` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '删除状态(0-正常,1-已删除)',
+    `create_by` VARCHAR(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'system' COMMENT '创建人',
+    `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_by` VARCHAR(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'system' COMMENT '更新人',
+    `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+);
+
+-- ----------------------------
+-- Table structure for `email_msg`
+-- ----------------------------
+DROP TABLE IF EXISTS `email_msg`;
+CREATE TABLE `email_msg` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY COMMENT '自增ID',
+    `email` VARCHAR(255) COMMENT '邮件',
+    `subject` VARCHAR(255) COMMENT '主题',
+    `from` VARCHAR(255) COMMENT '来源',
+	`text` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '邮件内容',
+	`address_array` TEXT COMMENT '地址列表',
+    `description` TEXT COMMENT '描述',
+    `disposition` TEXT COMMENT '排列',
+    `file_name` VARCHAR(255) COMMENT '文件名称',
+    `received_date` DATETIME COMMENT '接收时间',
+    `sent_date` DATETIME COMMENT '发送时间',
+    `replay_to_array` TEXT COMMENT '回复人',
     `del_flag` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '删除状态(0-正常,1-已删除)',
     `create_by` VARCHAR(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'system' COMMENT '创建人',
     `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

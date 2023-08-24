@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.admarv.saas.mapper.EmailMsgMapper">
+  <resultMap id="BaseResultMap" type="com.admarv.saas.model.EmailMsg">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="from" jdbcType="VARCHAR" property="from" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="received_date" jdbcType="TIMESTAMP" property="receivedDate" />
+    <result column="sent_date" jdbcType="TIMESTAMP" property="sentDate" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="text" jdbcType="LONGVARCHAR" property="text" />
+    <result column="address_array" jdbcType="LONGVARCHAR" property="addressArray" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="disposition" jdbcType="LONGVARCHAR" property="disposition" />
+    <result column="replay_to_array" jdbcType="LONGVARCHAR" property="replayToArray" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from email_msg
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.admarv.saas.model.EmailMsg">
+    insert into email_msg (id, email, subject, 
+      from, file_name, received_date, 
+      sent_date, del_flag, create_by, 
+      create_time, update_by, update_time, 
+      text, address_array, description, 
+      disposition, replay_to_array)
+    values (#{id,jdbcType=INTEGER}, 
+      #{email,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, 
+      #{from,jdbcType=VARCHAR}, 
+      #{fileName,jdbcType=VARCHAR}, 
+      #{receivedDate,jdbcType=TIMESTAMP}, 
+      #{sentDate,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=BIT}, 
+      #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, 
+      #{text,jdbcType=LONGVARCHAR}, 
+      #{addressArray,jdbcType=LONGVARCHAR},
+      #{description,jdbcType=LONGVARCHAR}, 
+      #{disposition,jdbcType=LONGVARCHAR}, 
+      #{replayToArray,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.admarv.saas.model.EmailMsg">
+    update email_msg
+    set email = #{email,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      from = #{from,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      received_date = #{receivedDate,jdbcType=TIMESTAMP},
+      sent_date = #{sentDate,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      text = #{text,jdbcType=LONGVARCHAR},
+      address_array = #{addressArray,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      disposition = #{disposition,jdbcType=LONGVARCHAR},
+      replay_to_array = #{replayToArray,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, email, subject, from, file_name, received_date, sent_date, del_flag, create_by, 
+    create_time, update_by, update_time, text, address_array, description, disposition, 
+    replay_to_array
+    from email_msg
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, email, subject, from, file_name, received_date, sent_date, del_flag, create_by, 
+    create_time, update_by, update_time, text, address_array, description, disposition, 
+    replay_to_array
+    from email_msg
+  </select>
+</mapper>

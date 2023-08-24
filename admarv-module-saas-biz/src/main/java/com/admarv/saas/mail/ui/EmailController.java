@@ -3,6 +3,7 @@ package com.admarv.saas.mail.ui;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -20,12 +21,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.admarv.saas.common.CommonConstant;
 import com.admarv.saas.fb.common.Response;
 import com.admarv.saas.mail.constant.SMTPEnum;
+import com.admarv.saas.mail.domain.EmailReceiveService;
 import com.admarv.saas.mail.domain.EmailService;
 import com.admarv.saas.mail.dto.req.EmailRequest;
 import com.admarv.saas.mail.dto.req.ReqSaveAccountInfo;
 import com.admarv.saas.mail.dto.resp.RespGetEmailInfo;
 import com.admarv.saas.mapper.EmailInfoMapper;
+import com.admarv.saas.mapper.EmailMsgMapper;
 import com.admarv.saas.model.EmailInfo;
+import com.admarv.saas.model.EmailMsg;
 import com.admarv.saas.utils.JacksonUtils;
 
 /**
@@ -42,7 +46,13 @@ public class EmailController {
     private EmailService emailService;
 	
 	@Autowired
+	private EmailReceiveService emailReceiveService;
+	
+	@Autowired
 	private EmailInfoMapper emailInfoMapper;
+	
+	@Autowired
+	private EmailMsgMapper emailMsgMapper;
 	
     /**
      * 上传邮件附件
@@ -161,4 +171,46 @@ public class EmailController {
 		log.info("response：{}", response);
 		return response;
 	}
+	
+	@RequestMapping(value = "/admarv/emailSync", method = RequestMethod.GET)
+	public String emailSync(String userId) {
+		log.info("/admarv/emailSync userId:{}", userId);
+		EmailInfo selectEmailInfo = new EmailInfo();
+		selectEmailInfo.setUserId(userId);
+		EmailInfo emailInfo = emailInfoMapper.selectOneByEntity(selectEmailInfo);
+		String email = emailInfo.getEmail();
+		String password = emailInfo.getPassword();
+		String authCode = emailInfo.getAuthCode();
+		if (StringUtils.isNotBlank(authCode)) {
+			emailReceiveService.receiveEmail(email, authCode);
+		} else {
+			emailReceiveService.receiveEmail(email, password);
+		}
+		return "SUCCESS EMAIL SYNC";
+	}
+	
+	@RequestMapping(value = "/admarv/getEmailSync", method = RequestMethod.GET)
+	public Response getEmailSync(String userId) {
+		log.info("/admarv/getEmailSync userId:{}", userId);
+		EmailInfo selectEmailInfo = new EmailInfo();
+		selectEmailInfo.setUserId(userId);
+		EmailInfo emailInfo = emailInfoMapper.selectOneByEntity(selectEmailInfo);
+		log.info("emailInfo:{}", emailInfo);
+		String email = emailInfo.getEmail();
+		String password = emailInfo.getPassword();
+		String authCode = emailInfo.getAuthCode();
+		List<EmailMsg> result;
+		if (StringUtils.isNotBlank(authCode)) {
+			result = emailReceiveService.receiveEmail(email, authCode);
+		} else {
+			result = emailReceiveService.receiveEmail(email, password);
+		}
+		Response response = new Response();
+		response.setCode("200");
+		response.setResult(result);
+		response.setSuccess(true);
+		log.info("response：{}", response);
+		return response;
+	}
+	
 }
