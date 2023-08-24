@@ -16,11 +16,10 @@ import javax.mail.Store;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.admarv.saas.mail.constant.POP3Enum;
-import com.admarv.saas.mapper.EmailMsgMapper;
+import com.admarv.saas.mail.dto.resp.RespEmailMsg;
 import com.admarv.saas.model.EmailMsg;
 import com.google.api.client.util.Lists;
 
@@ -34,28 +33,27 @@ public class EmailReceiveService {
 	
 	private static final Logger log = LoggerFactory.getLogger(EmailReceiveService.class);
 
-	@Autowired
-	private EmailMsgMapper emailMsgMapper;
+	//@Autowired
+	//private EmailMsgMapper emailMsgMapper;
 	
 	/**
 	 * @param userName
 	 * @param password
 	 */
-	public List<EmailMsg> receiveEmail(final String email, final String password) {
-		List<EmailMsg> emailMsgList = Lists.newArrayList();
+	public List<RespEmailMsg> receiveEmail(final String email, final String password) {
+		List<RespEmailMsg> emailMsgList = Lists.newArrayList();
+		Properties properties = new Properties();
+		properties.put("mail.store.protocol", "pop3");
+		properties.put("mail.debug", Boolean.TRUE);
+		properties.put("mail.auth.debug", Boolean.TRUE);
+		properties.put("mail.smtp.socketFactory.fallback", "false");
 		
-			Properties properties = new Properties();
-			properties.put("mail.store.protocol", "pop3");
-			properties.put("mail.debug", Boolean.TRUE);
-			properties.put("mail.auth.debug", Boolean.TRUE);
-			properties.put("mail.smtp.socketFactory.fallback", "false");
-			
-			Session session = Session.getInstance(properties, new Authenticator() {
-				@Override
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(email, password);
-				}
-			});
+		Session session = Session.getInstance(properties, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(email, password);
+			}
+		});
 			
 		 try {
 			POP3Enum pop3Enum = POP3Enum.getByEmailFormat(email);
@@ -65,8 +63,16 @@ public class EmailReceiveService {
 			
 			Folder folder = store.getFolder("INBOX");
 			folder.open(Folder.READ_ONLY);
-			Message[] messages = folder.getMessages();
+			Message[] messages = folder.getMessages(1, folder.getMessageCount());
+			
+			int newMessageCount = folder.getNewMessageCount();
+			log.info("new Message Count :{}", newMessageCount);
+			int unreadMessageCount = folder.getUnreadMessageCount();
+			log.info("unread Message Count :{}", unreadMessageCount);
+			int messageCount = folder.getMessageCount();
+			log.info("message Count :{}", messageCount);
 			log.info("messages length:{}", messages.length);
+			
 			for (int i = 0; i < messages.length; i++) {
 				Message message = messages[i];
 				log.info("message:{},i:{}", message, i);			
@@ -94,7 +100,6 @@ public class EmailReceiveService {
 				for (Address replayTo : replayToArray) {
 					log.info("replayTo:{}", replayTo);
 				}
-				
 				EmailMsg insert = new EmailMsg();
 				insert.setSubject(subject);
 				insert.setFrom(fromArray.toString());
@@ -108,8 +113,19 @@ public class EmailReceiveService {
 				insert.setReplayToArray(replayToArray.toString());
 //				int row = emailMsgMapper.insert(insert);
 //				log.info("success insert email Msg row:{}", row);
-				
-				emailMsgList.add(insert);
+				RespEmailMsg respEmailMsg=new RespEmailMsg();
+				respEmailMsg.setEmail(email);
+				respEmailMsg.setSubject(subject);
+				respEmailMsg.setFrom(fromArray.toString());
+				respEmailMsg.setText(message.getContent().toString());
+				respEmailMsg.setAddressArray(addressArray.toString());
+				respEmailMsg.setDescription(description);
+				respEmailMsg.setDisposition(disposition);
+				respEmailMsg.setFileName(fileName);
+				respEmailMsg.setReceivedDate(receivedDate);
+				respEmailMsg.setSentDate(sentDate);
+				respEmailMsg.setReplayToArray(replayToArray.toString());
+				emailMsgList.add(respEmailMsg);
 			}
 			
 			folder.close(false);

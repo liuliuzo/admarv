@@ -25,11 +25,11 @@ import com.admarv.saas.mail.domain.EmailReceiveService;
 import com.admarv.saas.mail.domain.EmailService;
 import com.admarv.saas.mail.dto.req.EmailRequest;
 import com.admarv.saas.mail.dto.req.ReqSaveAccountInfo;
+import com.admarv.saas.mail.dto.resp.RespEmailMsg;
 import com.admarv.saas.mail.dto.resp.RespGetEmailInfo;
 import com.admarv.saas.mapper.EmailInfoMapper;
 import com.admarv.saas.mapper.EmailMsgMapper;
 import com.admarv.saas.model.EmailInfo;
-import com.admarv.saas.model.EmailMsg;
 import com.admarv.saas.utils.JacksonUtils;
 
 /**
@@ -199,7 +199,7 @@ public class EmailController {
 		String email = emailInfo.getEmail();
 		String password = emailInfo.getPassword();
 		String authCode = emailInfo.getAuthCode();
-		List<EmailMsg> result;
+		List<RespEmailMsg> result;
 		if (StringUtils.isNotBlank(authCode)) {
 			result = emailReceiveService.receiveEmail(email, authCode);
 		} else {
