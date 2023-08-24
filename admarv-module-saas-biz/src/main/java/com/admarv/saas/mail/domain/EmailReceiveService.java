@@ -43,7 +43,7 @@ public class EmailReceiveService {
 	 */
 	public List<EmailMsg> receiveEmail(final String email, final String password) {
 		List<EmailMsg> emailMsgList = Lists.newArrayList();
-		try {
+		
 			Properties properties = new Properties();
 			properties.put("mail.store.protocol", "pop3");
 			properties.put("mail.debug", Boolean.TRUE);
@@ -57,15 +57,16 @@ public class EmailReceiveService {
 				}
 			});
 			
+		 try {
 			POP3Enum pop3Enum = POP3Enum.getByEmailFormat(email);
 			String host = pop3Enum.getPopHost();
 			Store store = session.getStore("pop3");
 			store.connect(host, email, password);
+			
 			Folder folder = store.getFolder("INBOX");
 			folder.open(Folder.READ_ONLY);
-
 			Message[] messages = folder.getMessages();
-						
+			log.info("messages length:{}", messages.length);
 			for (int i = 0; i < messages.length; i++) {
 				Message message = messages[i];
 				log.info("message:{},i:{}", message, i);			
@@ -105,10 +106,12 @@ public class EmailReceiveService {
 				insert.setReceivedDate(receivedDate);
 				insert.setSentDate(sentDate);
 				insert.setReplayToArray(replayToArray.toString());
-				//int row = emailMsgMapper.insert(insert);
-				//log.info("success insert email Msg row:{}", row);
+//				int row = emailMsgMapper.insert(insert);
+//				log.info("success insert email Msg row:{}", row);
+				
 				emailMsgList.add(insert);
 			}
+			
 			folder.close(false);
 			store.close();
 			return emailMsgList;
