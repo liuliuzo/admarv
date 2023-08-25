@@ -20,7 +20,6 @@ import com.admarv.saas.fb.common.FacebookClientService;
 import com.admarv.saas.fb.common.Response;
 import com.admarv.saas.fb.page.dto.req.ReqPublishVideo;
 import com.admarv.saas.fb.page.dto.req.ReqPublishVideoScheduler;
-import com.admarv.saas.fb.page.dto.req.user_id;
 import com.admarv.saas.fb.page.dto.resp.RespPublishVideo;
 import com.admarv.saas.utils.FilesUtils;
 import com.admarv.saas.utils.JacksonUtils;
@@ -154,9 +153,6 @@ public class FBPagePostController {
 			return response;
 		}
     }
-    
-    
-    
     
     /**
      * 视频文件上传
