@@ -1,10 +1,12 @@
 package com.admarv.saas.fb.page.ui;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,11 +35,14 @@ import com.admarv.saas.fb.page.domain.FBSendSchedTask;
 import com.admarv.saas.fb.page.dto.req.ReqSend;
 import com.admarv.saas.fb.page.dto.req.ReqSendSched;
 import com.admarv.saas.utils.CronUtils;
+import com.admarv.saas.utils.DateUtils;
 import com.admarv.saas.utils.JacksonUtils;
+import com.admarv.saas.utils.SpringBeanUtils;
 import com.restfb.BinaryAttachment;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.types.FacebookType;
+import com.restfb.types.GraphResponse;
 import com.restfb.types.Post;
 import com.restfb.types.Privacy;
 
@@ -148,32 +153,75 @@ public class FBPageController {
      * @throws Exception
      */
     @PostMapping("/admarv/sendSched")
-    public String add(@RequestBody ReqSendSched reqSendSched) {
+    public String sendSched(@RequestBody ReqSendSched reqSendSched) {
         log.info("/send reqSendSched:{}", reqSendSched);
         try {
-            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-            // 定义JobDetail
-            String jsonReqSendSched = JacksonUtils.toJson(reqSendSched);
-            JobDetail fbSendSchedTaskJobDetail = JobBuilder.newJob(FBSendSchedTask.class)
-                    .withIdentity("FBSendSchedTask", "GroupFBSendSched")
-                    .usingJobData("jsonReqSendSched", jsonReqSendSched).build();
-            String sendDt = reqSendSched.getSendDt();
-            // 使用CRON表达式设置定时任务
-            String cronDt = CronUtils.convertToCronExpression(sendDt);
-            // 定义触发器
-            Trigger trigger = TriggerBuilder
-                    .newTrigger()
-                    .withIdentity(UUID.randomUUID().toString(), "GroupFBSendSched")
-                    .withSchedule(CronScheduleBuilder.cronSchedule(cronDt)).build();
-            // 将作业和触发器注册到调度器中
-            scheduler.scheduleJob(fbSendSchedTaskJobDetail, trigger);
-            // 启动调度器
-            scheduler.start();
+  
+			String strSendDt = reqSendSched.getSendDt();
+			Date sendDt = DateUtils.stringToDate(strSendDt, DateUtils.PATTERN_DATETIME);
+	        String msg = reqSendSched.getMsg();
+	        String pageId = reqSendSched.getPageId();
+	        String userId = reqSendSched.getUserId();
+	        // 获取Spring中的FacebookClientService,获取user对应的facebookClient
+	        FacebookClientService facebookClientService = SpringBeanUtils.getBean(FacebookClientService.class);
+	        FacebookClient facebookClient = facebookClientService.getClientByUserId(userId);
+	        FacebookClient pageAccessClient = facebookClientService.getPageAccessClient(facebookClient, userId);
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        List<String> fileNames = reqSendSched.getFileList();
+	        try {
+	            if (fileNames != null && !fileNames.isEmpty()) {
+	                // 创建一个包含多个照片文件输入流的列表
+	                List<FileInputStream> imageStreams = new ArrayList<>();
+	                for (String fileName : fileNames) {
+	                    File imageFile = new File(CommonConstant.IMG_POST_PATH + "/" + fileName);
+	                    FileInputStream imageStream = new FileInputStream(imageFile);
+	                    imageStreams.add(imageStream);
+	                }
+	                // 构建包含多个二进制附件的请求参数
+	                List<BinaryAttachment> attachments = new ArrayList<>();
+	                for (int i = 0; i < imageStreams.size(); i++) {
+	                    int imageIndex = i + 1;
+	                    BinaryAttachment attachment = BinaryAttachment.with("image" + imageIndex + ".jpg", imageStreams.get(i));
+	                    attachments.add(attachment);
+	                }
+	                Privacy privacy = new Privacy();
+	                privacy.setValue("EVERYONE");
+	                Post post = new Post();
+	                post.setMessage(msg);
+	                post.setPrivacy(privacy);
+	                // 将多张照片与消息一起发布到 Facebook
+	                String photoUrl = "/" + pageId + "/photos";
+	                log.info("photoUrl:{}", photoUrl);
+	                FacebookType publishPhotoResponse = pageAccessClient.publish(photoUrl, FacebookType.class, attachments, Parameter.with("post", post), Parameter.with("message", msg));
+	                String id = publishPhotoResponse.getId();
+	                log.info("/id:{}", id);
+	                // 关闭输入流
+	                for (FileInputStream imageStream : imageStreams) {
+	                    imageStream.close();
+	                }
+	            } else {
+	                // 如果没有图则只发送文字
+	                publishMessage(msg, pageId, facebookClient);
+	            }
+	        } catch (Exception e) {
+            
             return "success";
         } catch (Exception e) {
             return e.getMessage();
-        }
+        }  	
+		log.info("Published message ID:{}", publishMessageResponse.getId());
+        
+        
     }
+    
+    
     
     private String publishMessage(String original, String pageId, FacebookClient pageAccessClient) {
         Privacy privacy = new Privacy();
