@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.admarv.saas.common.UserRoleConstant;
 import com.admarv.saas.fb.lead.constant.FlwpStatEnum;
 import com.admarv.saas.fb.lead.constant.LeadStatEnum;
 import com.admarv.saas.mapper.LeadGenMapper;
@@ -33,8 +34,6 @@ import com.github.pagehelper.PageInfo;
 public class LeadGenService {
 
     private static final Logger log = LoggerFactory.getLogger(LeadGenService.class);
-    
-    private static final String MGR_ROLE_ID = "1260924539346472964";
     
     @Autowired
     private LeadGenMapper leadGenMapper;
@@ -89,9 +88,10 @@ public class LeadGenService {
      */
     public PageInfo<LeadGen> getDispLeads(LeadQueryDO leadQueryDO) {
         log.info("getDispLeads leadQueryDO:{}", leadQueryDO);
-        String userId = leadQueryDO.getUserId();
         int pageNum = leadQueryDO.getPageNum();
         int pageSize = leadQueryDO.getPageSize();
+        
+        String userId = leadQueryDO.getUserId();
         String leadAuality = leadQueryDO.getLeadAuality();
         String flwpStat = leadQueryDO.getFlwpStat();
         String leadStat = leadQueryDO.getLeadStat();
@@ -104,13 +104,15 @@ public class LeadGenService {
         
         SysUserRole selSysUserRole = new SysUserRole();
         selSysUserRole.setUserId(userId);
-        SysUserRole sysUserRole = sysUserRoleMapper.selectOneByEntity(selSysUserRole);
+		SysUserRole sysUserRole = sysUserRoleMapper.selectOneByEntity(selSysUserRole);
+		log.info("sysUserRole:{}", sysUserRole); 
         String role = sysUserRole.getRoleId();
-        if (!MGR_ROLE_ID.equals(role)) {
+        //如果不是管理员
+        if (!UserRoleConstant.ROLE_SYS_MGR.equals(role)) {
             SysUserFbBind selSysUserFbBind = new SysUserFbBind();
             selSysUserFbBind.setUserId(userId);
             SysUserFbBind sysUserFbBind = sysUserFbBindMapper.selectOneByEntity(selSysUserFbBind);
-            String pageId = sysUserFbBind.getPageId();
+            String pageId = sysUserFbBind.getPageId();  
             LeadGen selectEntity = new LeadGen();
             selectEntity.setPageId(pageId);
             selectEntity.setUserId(userId);
