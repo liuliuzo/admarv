@@ -24,17 +24,12 @@ public class generateSignDemo {
 	public void generateSignDemo() {
 	    // header参数
 	    Map<String, String> headers = new HashMap<>(8);
-	    headers.put("accessKey", "fme2na3kdi3ki");
+	    headers.put("accessKey", "2rB3KPbb");
 	    headers.put("ts", "1655710885431");
 	    headers.put("bizType", "2");
 	    headers.put("action", "mt");
 
 	    // 业务参数
-	    JSONObject postData = new JSONObject();
-	    postData.put("id", 10001);
-	    postData.put("name", "牛小信");
-	    String body = postData.toString();
-	    
 	    // accessKey对应的密码
 	    String accessSecret = "abciiiko2k3";
 
