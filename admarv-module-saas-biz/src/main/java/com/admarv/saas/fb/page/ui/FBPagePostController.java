@@ -126,8 +126,8 @@ public class FBPagePostController {
 					BinaryAttachment.with("source", fileName, fileBytes), 
 					Parameter.with("description", msg),
 					Parameter.with("published", false), 
-					Parameter.with("scheduled_publish_time", sendDate)
-					);
+					Parameter.with("scheduled_publish_time", sendDate));
+			
 			String id = publishPhotoResponse.getId();
 			String postId = publishPhotoResponse.getPostId();
 			String timelineId = publishPhotoResponse.getTimelineId();
