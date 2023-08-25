@@ -62,7 +62,7 @@ public class FacebookClientService implements InitializingBean {
     }
     
     /**
-     * TOTO: 待优化
+     * TOTO: 待优化,accounts信息持久化到本地
      * 
      * @param facebookClient
      * @param pageId

@@ -12,9 +12,14 @@ public class CommonConstant {
     }
     
     /**
-     * 发帖文件路径
+     * 发帖图片文件路径
      */
     public static final String IMG_POST_PATH = "/home/ecs-user/admarv/saas/imgfb/";
+    
+    /**
+     * 发帖视频文件路径
+     */
+    public static final String VIDEO_POST_PATH = "/home/ecs-user/admarv/saas/videofb/";
     
     /**
      * 询盘文件路径
