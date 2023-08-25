@@ -13,6 +13,7 @@ public class ReqGetGPTMsg implements Serializable {
 
 	private String userId;
 	private String msg;
+	
 	// 会话ID
 	private String conversationId;
 
