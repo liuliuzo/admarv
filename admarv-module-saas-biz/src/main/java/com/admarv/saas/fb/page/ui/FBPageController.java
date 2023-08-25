@@ -192,13 +192,4 @@ public class FBPageController {
         return responseId;
     }
     
-    
-    /**
-     * publish_video
-     */
-    @RequestMapping(value = "/admarv/publishVideo", method = RequestMethod.POST)
-    public Response publishVideo(@RequestBody ReqSend reqSend) throws Exception {
-		return null;
-    }
-    
 }
