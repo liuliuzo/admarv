@@ -14,7 +14,6 @@ public class ReqPublishVideo implements Serializable{
 	private String userId;
 	private String fileName;
 	private String msg;
-	private String pageId;
 
 	public String getUserId() {
 		return userId;
@@ -40,17 +39,9 @@ public class ReqPublishVideo implements Serializable{
 		this.msg = msg;
 	}
 
-	public String getPageId() {
-		return pageId;
-	}
-
-	public void setPageId(String pageId) {
-		this.pageId = pageId;
-	}
-
 	@Override
 	public String toString() {
-		return "ReqPublishVideo [userId=" + userId + ", fileName=" + fileName + ", msg=" + msg + ", pageId=" + pageId
-				+ "]";
+		return "ReqPublishVideo [userId=" + userId + ", fileName=" + fileName + ", msg=" + msg + "]";
 	}
+	
 }

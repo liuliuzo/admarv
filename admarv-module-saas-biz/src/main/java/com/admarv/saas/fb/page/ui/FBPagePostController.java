@@ -21,6 +21,8 @@ import com.admarv.saas.fb.common.Response;
 import com.admarv.saas.fb.page.dto.req.ReqPublishVideo;
 import com.admarv.saas.fb.page.dto.req.ReqPublishVideoScheduler;
 import com.admarv.saas.fb.page.dto.resp.RespPublishVideo;
+import com.admarv.saas.mapper.SysUserFbBindMapper;
+import com.admarv.saas.model.SysUserFbBind;
 import com.admarv.saas.utils.FilesUtils;
 import com.admarv.saas.utils.JacksonUtils;
 import com.restfb.BinaryAttachment;
@@ -42,6 +44,10 @@ public class FBPagePostController {
     @Autowired
     private FacebookClientService facebookClientService;
     
+    
+    @Autowired
+    private SysUserFbBindMapper sysUserFbBindMapper;
+    
     /**
      * publish_video
      */
@@ -52,6 +58,20 @@ public class FBPagePostController {
 		String fileName = reqPublishVideo.getFileName();
 		String msg = reqPublishVideo.getMsg();
 		
+		SysUserFbBind selectEntity = new SysUserFbBind();
+		selectEntity.setUserId(userId);
+		SysUserFbBind sysUserFbBind = sysUserFbBindMapper.selectOneByEntity(selectEntity);
+		if (sysUserFbBind == null) {
+			Response response = new Response();
+			response.setCode("701");
+			response.setMessage("用户未绑定广告账户和公共主页");
+			response.setSuccess(false);
+			String srtResponse = JacksonUtils.toJson(response);
+			log.info(srtResponse);
+			return response;
+		}
+		
+		String pageId = sysUserFbBind.getPageId();
 		FacebookClient facebookClient = facebookClientService.getClientByUserId(userId);
 		if (facebookClient == null) {
             Response response = new Response();
@@ -68,7 +88,7 @@ public class FBPagePostController {
 			String filePath = CommonConstant.VIDEO_POST_PATH + "/" + fileName;
 			log.info("filePath:{}", filePath);
 			byte[] fileBytes = FilesUtils.readFileBytes(filePath);
-			GraphResponse publishPhotoResponse = pageAccessClient.publish("me/videos", GraphResponse.class,
+			GraphResponse publishPhotoResponse = pageAccessClient.publish(pageId+"/videos", GraphResponse.class,
 					BinaryAttachment.with("source", fileName, fileBytes), 
 					Parameter.with("description", msg));
 			
