@@ -1,9 +1,6 @@
 package com.admarv.saas.fb.page.dto.req;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 发送贴文的 DTO

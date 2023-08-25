@@ -65,7 +65,7 @@ public class DashBoardController {
 			return srtResponse;
 		} catch (Exception e) {
 			Response response = new Response();
-			response.setCode("601");
+			response.setCode("602");
 			response.setResult(e.getMessage());
 			response.setSuccess(false);
 			String srtResponse = JacksonUtils.toJson(response);

@@ -96,6 +96,7 @@ public class FBPageController {
         String userId = reqSend.getUserId();
         // 获取user对应的facebookClient
         FacebookClient facebookClient = facebookClientService.getClientByUserId(userId);
+        
         if (facebookClient == null) {
             Response response = new Response();
             response.setCode("601");
@@ -105,6 +106,7 @@ public class FBPageController {
             log.info(srtResponse);
             return srtResponse;
         }
+        
         FacebookClient pageAccessClient = facebookClientService.getPageAccessClient(facebookClient, userId);
         List<String> fileNames = reqSend.getFileList();
         // 构建包含多个二进制附件的请求参数
@@ -189,4 +191,14 @@ public class FBPageController {
         log.info("Published message ID:{}", responseId);
         return responseId;
     }
+    
+    
+    /**
+     * publish_video
+     */
+    @RequestMapping(value = "/admarv/publishVideo", method = RequestMethod.POST)
+    public Response publishVideo(@RequestBody ReqSend reqSend) throws Exception {
+		return null;
+    }
+    
 }
