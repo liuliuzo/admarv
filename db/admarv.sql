@@ -406,6 +406,7 @@ CREATE TABLE `fb_posts` (
     `publish_type` VARCHAR(255) COMMENT '发布类型',
     `post_status` VARCHAR(255) COMMENT '贴文状态',
     `publish_time` DATETIME COMMENT '发布时间',
+    `attachments` TEXT COMMENT '贴文附件',
     `action_taken` VARCHAR(255) COMMENT '操作',
     `del_flag` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '删除状态(0-正常,1-已删除)',
     `create_by` VARCHAR(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'system' COMMENT '创建人',
