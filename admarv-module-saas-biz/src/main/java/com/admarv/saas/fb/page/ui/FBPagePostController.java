@@ -43,8 +43,7 @@ public class FBPagePostController {
     
     @Autowired
     private FacebookClientService facebookClientService;
-    
-    
+   
     @Autowired
     private SysUserFbBindMapper sysUserFbBindMapper;
     
@@ -122,7 +121,7 @@ public class FBPagePostController {
      */
     @RequestMapping(value = "/admarv/publishVideoScheduler", method = RequestMethod.POST)
     public Response publishVideoScheduler(@RequestBody ReqPublishVideoScheduler reqPublishVideoScheduler) throws Exception {
-		log.info("/admarv/publishVideo reqPublishVideoScheduler:{}", reqPublishVideoScheduler);
+		log.info("/admarv/publishVideoScheduler reqPublishVideoScheduler:{}", reqPublishVideoScheduler);
 		String userId = reqPublishVideoScheduler.getUserId();
 		String fileName = reqPublishVideoScheduler.getFileName();
 		String msg = reqPublishVideoScheduler.getMsg();
@@ -151,7 +150,7 @@ public class FBPagePostController {
 			String id = publishPhotoResponse.getId();
 			String postId = publishPhotoResponse.getPostId();
 			String timelineId = publishPhotoResponse.getTimelineId();
-			
+
 			RespPublishVideo respPublishVideo = new RespPublishVideo();
 			respPublishVideo.setId(id);
 			respPublishVideo.setPostId(postId);
